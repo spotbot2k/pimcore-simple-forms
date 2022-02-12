@@ -1,0 +1,17 @@
+{% if editmode %}
+    <div class="editmode-label align-middle">
+        Orientation:
+    </div>
+    {{ pimcore_relation("formObject",{
+        "types": ["object"],
+        "subtypes": {
+            "object": ["object"]
+        },
+        "classes": ["SimpleForm"],
+        "reload": true
+    }) }}
+{% endif %}
+
+{% if form is defined %}
+    <section class="container">{{ form(form) }}</section>
+{% endif %}

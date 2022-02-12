@@ -1,0 +1,32 @@
+{
+    "name": "spotbot2k/pimcore-simple-forms",
+    "license": "GPL-3.0-or-later",
+    "type": "pimcore-bundle",
+    "support": {
+        "email": "alexander@schwirjow.de",
+        "forum": "https://www.devgarden.de"
+    },
+    "authors": [
+        {
+            "name": "Alexander Schwirjow",
+            "email": "alexander@schwirjow.de",
+            "homepage": "https://www.schwirjow.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+      "pimcore/pimcore": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleFormsBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "pimcore": {
+            "bundles": [
+                "SimpleFormsBundle\\SimpleFormsBundle"
+            ]
+        }
+    }
+}
