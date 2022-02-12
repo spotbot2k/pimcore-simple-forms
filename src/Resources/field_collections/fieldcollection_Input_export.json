@@ -132,7 +132,7 @@
                         "width": 250,
                         "calculatorType": "class",
                         "calculatorExpression": "",
-                        "calculatorClass": "@SimpleFormsBundle\\CalculatedValue\\FieldSlug",
+                        "calculatorClass": "@SimpleFormsBundle\\CalculatedValue\\FieldSlugCalculator",
                         "queryColumnType": "varchar",
                         "columnLength": 190,
                         "name": "slug",

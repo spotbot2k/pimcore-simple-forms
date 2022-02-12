@@ -45,8 +45,7 @@
                     {
                         "fieldtype": "fieldcollections",
                         "allowedTypes": [
-                            "Input",
-                            "Textarea"
+                            "Input"
                         ],
                         "lazyLoading": true,
                         "maxItems": "",
