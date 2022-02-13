@@ -11,14 +11,14 @@ namespace SimpleFormsBundle\CalculatedValue;
 use Pimcore\Model\DataObject\ClassDefinition\CalculatorClassInterface;
 use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\DataObject\Data\CalculatedValue;
-use Pimcore\Model\DataObject\Fieldcollection\Data\Input;
+use Pimcore\Model\DataObject\SimpleForm;
 
 class FieldSlugCalculator implements CalculatorClassInterface
 {
     public function compute(Concrete $object, CalculatedValue $context): string
     {
-        if ($object instanceof Input) {
-            return strtolower(str_replace(" ", "-", $object->getLabel()));
+        if ($object instanceof SimpleForm) {
+            return strtolower(str_replace(" ", "-", $object->getFields()->get($context->getIndex())->getLabel()));
         }
 
         return '';
