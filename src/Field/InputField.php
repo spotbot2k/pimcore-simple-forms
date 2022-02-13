@@ -23,7 +23,7 @@ class InputField
 
         $class = sprintf("Symfony\Component\Form\Extension\Core\Type\%s", $class);
 
-        $event->getForm()->add('answer', $class, [
+        $event->getForm()->add($event->getData()->getSlug(), $class, [
             'mapped'     => false,
             'label'      => $event->getData()->getLabel(),
             'help_html'  => true,
