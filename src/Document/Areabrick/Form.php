@@ -10,6 +10,7 @@ namespace SimpleFormsBundle\Document\Areabrick;
 
 use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
 use Pimcore\Model\Document\Editable\Area\Info;
+use Pimcore\Mail;
 use SimpleFormsBundle\Form\SimpleFormType;
 use SimpleFormsBundle\Service\SimpleFormService;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -34,10 +35,29 @@ class Form extends AbstractTemplateAreabrick
             $form->handleRequest($info->getRequest());
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $isValid = $this->service->validate($formObject, $info->getRequest()->get(SimpleFormType::PREFIX));
+                if ($this->service->validate($formObject, $info->getRequest()->get(SimpleFormType::PREFIX))) {
+                    foreach ($formObject->getEmailDocuments() as $mailDocument) {
+                        $mail = new Mail();
+                        $mail->setDocument($mailDocument);
+                        $mail->setParams($this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX)));
+                        // @todo: replace params in to, cc and bcc
+                        $mail->send();
+                    }
+                }
             }
 
             $info->setParam('form', $form->createView());
         }
+    }
+
+    private function parseDataForMail(array $formData): array
+    {
+        $result = [];
+
+        foreach ($formData["fields"]["items"] as $idx => $field) {
+            $result = array_merge($result, $field);
+        }
+
+        return $result;
     }
 }
