@@ -18,6 +18,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SimpleFormType extends AbstractType
 {
+    const PREFIX = 'simple_form';
+
     /**
      * {@inheritdoc}
      */
@@ -40,5 +42,13 @@ class SimpleFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => SimpleForm::class,
         ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return self::PREFIX;
     }
 }

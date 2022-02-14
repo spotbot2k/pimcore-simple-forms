@@ -6,3 +6,9 @@ services:
 
   SimpleFormsBundle\Form\SimpleForm: ~
   SimpleFormsBundle\CalculatedValue\FieldSlugCalculator: ~
+  SimpleFormsBundle\Service\SimpleFormService: ~
+  # Installer
+  SimpleFormsBundle\Tools\Installer:
+    public: true
+    arguments:
+      $bundle: "@=service('kernel').getBundle('SimpleFormsBundle')"

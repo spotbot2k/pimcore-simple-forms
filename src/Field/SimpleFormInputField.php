@@ -10,7 +10,7 @@ namespace SimpleFormsBundle\Field;
 
 use Symfony\Component\Form\FormEvent;
 
-class InputField
+class SimpleFormInputField
 {
     public static function renderQuestion(FormEvent &$event): void
     {

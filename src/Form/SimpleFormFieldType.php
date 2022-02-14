@@ -20,7 +20,7 @@ class SimpleFormFieldType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-            $class = sprintf("SimpleFormsBundle\Field\%sField", $event->getData()->getType());
+            $class = sprintf("SimpleFormsBundle\Field\%s", $event->getData()->getType());
             if (class_exists($class)) {
                 $class::renderQuestion($event);
             }

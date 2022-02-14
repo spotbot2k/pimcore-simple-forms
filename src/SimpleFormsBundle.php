@@ -21,8 +21,8 @@ class SimpleFormsBundle extends AbstractPimcoreBundle
         return 'spotbot2k/pimcore-simple-forms';
     }
 
-    // public function getInstaller()
-    // {
-    //     return $this->container->get(Installer::class);
-    // }
+    public function getInstaller()
+    {
+        return $this->container->get(Installer::class);
+    }
 }
