@@ -36,11 +36,16 @@ class Form extends AbstractTemplateAreabrick
 
             if ($form->isSubmitted() && $form->isValid()) {
                 if ($this->service->validate($formObject, $info->getRequest()->get(SimpleFormType::PREFIX))) {
+                    $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX));
+
                     foreach ($formObject->getEmailDocuments() as $mailDocument) {
+                        $mailDocument->setTo($this->renderString($mailDocument->getTo(), $params));
+                        $mailDocument->setCc($this->renderString($mailDocument->getCc(), $params));
+                        $mailDocument->setBcc($this->renderString($mailDocument->getBcc(), $params));
+
                         $mail = new Mail();
                         $mail->setDocument($mailDocument);
-                        $mail->setParams($this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX)));
-                        // @todo: replace params in to, cc and bcc
+                        $mail->setParams($params);
                         $mail->send();
                     }
                 }
@@ -59,5 +64,13 @@ class Form extends AbstractTemplateAreabrick
         }
 
         return $result;
+    }
+
+    private function renderString(string $string, array $params): string
+    {
+        $twig = \Pimcore::getContainer()->get('twig');
+        $template = $twig->createTemplate($string);
+
+        return $template->render($params);
     }
 }

@@ -18,7 +18,10 @@ class FieldSlugCalculator implements CalculatorClassInterface
     public function compute(Concrete $object, CalculatedValue $context): string
     {
         if ($object instanceof SimpleForm) {
-            return strtolower(str_replace(' ', '-', $object->getFields()->get($context->getIndex())->getLabel()));
+            $string = str_replace(' ', '_', $object->getFields()->get($context->getIndex())->getLabel());
+            $string = str_replace('-', '_', $string);
+
+            return strtolower($string);
         }
 
         return '';
