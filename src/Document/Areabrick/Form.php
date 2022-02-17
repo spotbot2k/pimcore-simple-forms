@@ -9,8 +9,8 @@
 namespace SimpleFormsBundle\Document\Areabrick;
 
 use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
-use Pimcore\Model\Document\Editable\Area\Info;
 use Pimcore\Mail;
+use Pimcore\Model\Document\Editable\Area\Info;
 use SimpleFormsBundle\Form\SimpleFormType;
 use SimpleFormsBundle\Service\SimpleFormService;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -59,7 +59,7 @@ class Form extends AbstractTemplateAreabrick
     {
         $result = [];
 
-        foreach ($formData["fields"]["items"] as $idx => $field) {
+        foreach ($formData['fields']['items'] as $idx => $field) {
             $result = array_merge($result, $field);
         }
 
