@@ -15,6 +15,7 @@ use Pimcore\Logger;
 use Pimcore\Model\DataObject\ClassDefinition;
 use Pimcore\Model\DataObject\ClassDefinition\Service;
 use Pimcore\Model\DataObject\Fieldcollection;
+use Pimcore\Model\Translation;
 
 class Installer extends SettingsStoreAwareInstaller
 {
@@ -33,6 +34,7 @@ class Installer extends SettingsStoreAwareInstaller
     {
         $this->installFieldCollections();
         $this->installClasses();
+        $this->installTranslations();
 
         parent::install();
 
@@ -102,5 +104,10 @@ class Installer extends SettingsStoreAwareInstaller
     private function getObjectNameFromExport(string $filename, string $type = 'class_'): string
     {
         return str_replace($type, '', str_replace('_export.json', '', $filename));
+    }
+
+    private function installTranslations()
+    {
+        Translation::importTranslationsFromFile(__DIR__.'/../Resources/install/translations/export_admin_translations.csv', Translation::DOMAIN_ADMIN);
     }
 }
