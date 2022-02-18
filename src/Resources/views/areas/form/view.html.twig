@@ -1,5 +1,3 @@
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-
 {% if editmode %}
     <div class="editmode-label align-middle">
         Simple Form Object:
@@ -14,6 +12,9 @@
     }) }}
 {% endif %}
 
-{% if form is defined %}
+{% if form is not null %}
+    {% set layout = pimcore_relation("formObject").getElement().getLayout() | default('form_table') %}
+    {% form_theme form layout ~ '_layout.html.twig' %}
+
     <section class="container">{{ form(form) }}</section>
 {% endif %}

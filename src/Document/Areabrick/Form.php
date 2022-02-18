@@ -52,6 +52,8 @@ class Form extends AbstractTemplateAreabrick
             }
 
             $info->setParam('form', $form->createView());
+        } else {
+            $info->setParam('form', null);
         }
     }
 

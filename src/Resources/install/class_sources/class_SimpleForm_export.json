@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1645115159,
+    "modificationDate": 1645188357,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -107,6 +107,76 @@
                         "datatype": "layout",
                         "permissions": null,
                         "children": [
+                            {
+                                "fieldtype": "select",
+                                "options": [
+                                    {
+                                        "key": "pimcore_simple_forms.be.bootstrap_3",
+                                        "value": "bootstrap_3"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.bootstrap_3_horizontal",
+                                        "value": "bootstrap_3_horizontal"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.bootstrap_4",
+                                        "value": "bootstrap_4"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.bootstrap_4_horizontal",
+                                        "value": "bootstrap_4_horizontal"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.bootstrap_5",
+                                        "value": "bootstrap_5"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.bootstrap_5_horizontal",
+                                        "value": "bootstrap_5_horizontal"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.form_div",
+                                        "value": "form_div"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.form_table",
+                                        "value": "form_table"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.foundation_5",
+                                        "value": "foundation_5"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.foundation_6",
+                                        "value": "foundation_6"
+                                    },
+                                    {
+                                        "key": "pimcore_simple_forms.be.tailwind_2",
+                                        "value": "tailwind_2"
+                                    }
+                                ],
+                                "width": "",
+                                "defaultValue": "form_div",
+                                "optionsProviderClass": "",
+                                "optionsProviderData": "",
+                                "columnLength": 190,
+                                "dynamicOptions": false,
+                                "name": "layout",
+                                "title": "pimcore_simple_forms.be.layout",
+                                "tooltip": "",
+                                "mandatory": false,
+                                "noteditable": false,
+                                "index": false,
+                                "locked": false,
+                                "style": "",
+                                "permissions": null,
+                                "datatype": "data",
+                                "relationType": false,
+                                "invisible": false,
+                                "visibleGridView": false,
+                                "visibleSearch": false,
+                                "defaultValueGenerator": ""
+                            },
                             {
                                 "fieldtype": "manyToManyRelation",
                                 "width": "",
