@@ -19,6 +19,28 @@ class SimpleFormInputField
         switch ($event->getData()->getInputType()) {
             case 'hidden':
                 $class = 'HiddenType';
+                break;
+            case "date":
+                $class = 'DateType';
+                break;
+            case "time":
+                $class = 'TimeType';
+                break;
+            case "email":
+                $class = 'EmailType';
+                break;
+            case "number":
+                $class = 'IntegerType';
+                break;
+            case "password":
+                $class = 'PasswordType';
+                break;
+            case "tel":
+                $class = 'TelType';
+                break;
+            case "url":
+                $class = 'UrlType';
+                break;
         }
 
         $class = sprintf("Symfony\Component\Form\Extension\Core\Type\%s", $class);
@@ -31,7 +53,8 @@ class SimpleFormInputField
             'required'   => $event->getData()->getRequired() ? 'on' : 'off',
             'attr'       => [
                 'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
-                'placeholder' => $event->getData()->getPlaceholder(),
+                'placeholder'  => $event->getData()->getPlaceholder(),
+                'type'         => $event->getData()->getInputType(),
             ],
         ]);
     }
