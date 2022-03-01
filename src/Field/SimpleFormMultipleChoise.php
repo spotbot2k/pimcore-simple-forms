@@ -8,8 +8,8 @@
 
 namespace SimpleFormsBundle\Field;
 
-use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormEvent;
 
 class SimpleFormMultipleChoise
 {
