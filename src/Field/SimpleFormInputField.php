@@ -19,27 +19,35 @@ class SimpleFormInputField
         switch ($event->getData()->getInputType()) {
             case 'hidden':
                 $class = 'HiddenType';
+
                 break;
-            case "date":
+            case 'date':
                 $class = 'DateType';
+
                 break;
-            case "time":
+            case 'time':
                 $class = 'TimeType';
+
                 break;
-            case "email":
+            case 'email':
                 $class = 'EmailType';
+
                 break;
-            case "number":
+            case 'number':
                 $class = 'IntegerType';
+
                 break;
-            case "password":
+            case 'password':
                 $class = 'PasswordType';
+
                 break;
-            case "tel":
+            case 'tel':
                 $class = 'TelType';
+
                 break;
-            case "url":
+            case 'url':
                 $class = 'UrlType';
+
                 break;
         }
 
