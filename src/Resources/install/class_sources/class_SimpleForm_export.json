@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1645188357,
+    "modificationDate": 1646170994,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -25,7 +25,7 @@
         "bodyStyle": null,
         "datatype": "layout",
         "permissions": null,
-        "children": [
+        "childs": [
             {
                 "fieldtype": "tabpanel",
                 "border": false,
@@ -41,7 +41,7 @@
                 "bodyStyle": "",
                 "datatype": "layout",
                 "permissions": null,
-                "children": [
+                "childs": [
                     {
                         "fieldtype": "panel",
                         "layout": "fit",
@@ -57,11 +57,13 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "children": [
+                        "childs": [
                             {
                                 "fieldtype": "fieldcollections",
                                 "allowedTypes": [
-                                    "SimpleFormInputField"
+                                    "SimpleFormInputField",
+                                    "SimpleFormTextarea",
+                                    "SimpleFormMultipleChoise"
                                 ],
                                 "lazyLoading": true,
                                 "maxItems": "",
@@ -106,7 +108,7 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "children": [
+                        "childs": [
                             {
                                 "fieldtype": "select",
                                 "options": [
@@ -231,7 +233,7 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "children": [
+                        "childs": [
                             {
                                 "fieldtype": "checkbox",
                                 "defaultValue": 0,
