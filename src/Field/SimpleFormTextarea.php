@@ -8,8 +8,8 @@
 
 namespace SimpleFormsBundle\Field;
 
-use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormEvent;
 
 class SimpleFormTextarea
 {
@@ -21,9 +21,9 @@ class SimpleFormTextarea
             'help_html'  => true,
             'empty_data' => null,
             'required'   => $event->getData()->getRequired() ? 'on' : 'off',
-            "attr"       => [
-                "rows"   => $event->getData()->getRows(),
-            ]
+            'attr'       => [
+                'rows'   => $event->getData()->getRows(),
+            ],
         ]);
     }
 }
