@@ -14,7 +14,14 @@
 
 {% if form is not null %}
     {% set layout = pimcore_relation("formObject").getElement().getLayout() | default('form_table') %}
+    {% set useHoneyPot = pimcore_relation("formObject").getElement().getUseHoneyPot() | default(false) %}
     {% form_theme form layout ~ '_layout.html.twig' %}
 
-    <section class="container">{{ form(form) }}</section>
+    <section class="container">
+        {{ form_start(form) }}
+            {% if useHoneyPot %}
+                {{ form_widget(form.email, {attr: {class: 'form-control', style: 'display:none !important', tabindex: '-1', autocomplete: 'off'}}) }}
+            {% endif %}
+        {{ form_end(form) }}
+    </section>
 {% endif %}
