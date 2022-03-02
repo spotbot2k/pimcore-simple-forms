@@ -8,9 +8,9 @@
 
 namespace SimpleFormsBundle\Service;
 
-use SimpleFormsBundle\Form\SimpleFormType;
 use Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData;
 use Pimcore\Model\DataObject\SimpleForm;
+use SimpleFormsBundle\Form\SimpleFormType;
 
 class SimpleFormService
 {
