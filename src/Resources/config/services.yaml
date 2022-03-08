@@ -12,3 +12,7 @@ services:
     public: true
     arguments:
       $bundle: "@=service('kernel').getBundle('SimpleFormsBundle')"
+  # Controller
+  SimpleFormsBundle\Controller\EmailController:
+        tags:
+            - 'controller.service_arguments'
