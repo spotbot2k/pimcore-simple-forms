@@ -4,6 +4,12 @@
 
 Create and modify simple forms in pimcore backend with no code needed. The aim is to provide a simple UI that will be easy enough to be used by a pimcore newbie.
 
+## Installation
+
+``` bash
+composer require spotbot2k/pimcore-simple-forms
+```
+
 ## What can it do
 
 - Visual editing of forms
@@ -14,4 +20,4 @@ Create and modify simple forms in pimcore backend with no code needed. The aim i
 
 ## Configuration
 
-*TBD*
+1. [Basic Configuration](docs/01_Basic_Configuration.md)
