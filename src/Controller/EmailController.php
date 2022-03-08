@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * This file is part of the Pimcore Simple Forms Bundle
+ *
+ *  @license GPLv3
+ */
+
 namespace SimpleFormsBundle\Controller;
 
 use Pimcore\Controller\FrontendController;
