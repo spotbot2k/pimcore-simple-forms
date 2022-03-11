@@ -1,4 +1,4 @@
-﻿"key";"cs";"de";"en";"es";"fa";"fr";"hu";"it";"ja";"nl";"pl";"pt";"ru";"sk";"sv";"th";"tr";"uk";"pt_BR";"sv_FI";"zh_Hans"
+﻿﻿"key";"cs";"de";"en";"es";"fa";"fr";"hu";"it";"ja";"nl";"pl";"pt";"ru";"sk";"sv";"th";"tr";"uk";"pt_BR";"sv_FI";"zh_Hans"
 "pimcore_simple_forms.be.autocomplete";"";"Autocomplete";"Autocomplete";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.bootstrap_3";"";"Bootstrap 3";"Bootstrap 3";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.bootstrap_3_horizontal";"";"Bootstrap 3 (Horizontal)";"Bootstrap 3 (Horizontal)";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
@@ -33,5 +33,6 @@
 "pimcore_simple_forms.be.select";"";"Select";"Select";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.settings";"";"Einstellungen";"Settings";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.slug";"";"Slug";"Slug";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.success_redirect";"";"Weiterleitung bei Erfolg";"Redirect on Success";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.tailwind_2";"";"Tailwind 2";"Tailwind 2";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.useHoneyPot";"";"Honey Pot benutzen";"Use Honey Pot";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""

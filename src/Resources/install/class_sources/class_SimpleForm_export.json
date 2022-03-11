@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1646238029,
+    "modificationDate": 1647035544,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -259,6 +259,36 @@
                                 "pathFormatterClass": "",
                                 "name": "emailDocuments",
                                 "title": "pimcore_simple_forms.be.emailDocuments",
+                                "tooltip": "",
+                                "mandatory": false,
+                                "noteditable": false,
+                                "index": false,
+                                "locked": false,
+                                "style": "",
+                                "permissions": null,
+                                "datatype": "data",
+                                "invisible": false,
+                                "visibleGridView": false,
+                                "visibleSearch": false
+                            },
+                            {
+                                "fieldtype": "manyToOneRelation",
+                                "width": "",
+                                "assetUploadPath": "",
+                                "relationType": true,
+                                "objectsAllowed": false,
+                                "assetsAllowed": false,
+                                "assetTypes": [],
+                                "documentsAllowed": true,
+                                "documentTypes": [
+                                    {
+                                        "documentTypes": "page"
+                                    }
+                                ],
+                                "classes": [],
+                                "pathFormatterClass": "",
+                                "name": "successRedirect",
+                                "title": "pimcore_simple_forms.be.success_redirect",
                                 "tooltip": "",
                                 "mandatory": false,
                                 "noteditable": false,
