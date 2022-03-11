@@ -11,11 +11,11 @@ namespace SimpleFormsBundle\Document\Areabrick;
 use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
 use Pimcore\Mail;
 use Pimcore\Model\Document\Editable\Area\Info;
+use SimpleFormsBundle\Event\PreSendMailEvent;
 use SimpleFormsBundle\Form\SimpleFormType;
 use SimpleFormsBundle\Service\SimpleFormService;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use SimpleFormsBundle\Event\PreSendMailEvent;
+use Symfony\Component\Form\FormFactoryInterface;
 
 class Form extends AbstractTemplateAreabrick
 {
