@@ -35,6 +35,6 @@ class SimpleFormService
             return !empty($submitedData[$field->getSlug()]);
         }
 
-        return false;
+        return true;
     }
 }
