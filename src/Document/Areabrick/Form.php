@@ -14,6 +14,8 @@ use Pimcore\Model\Document\Editable\Area\Info;
 use SimpleFormsBundle\Form\SimpleFormType;
 use SimpleFormsBundle\Service\SimpleFormService;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use SimpleFormsBundle\Event\PreSendMailEvent;
 
 class Form extends AbstractTemplateAreabrick
 {
@@ -21,10 +23,13 @@ class Form extends AbstractTemplateAreabrick
 
     private SimpleFormService $service;
 
-    public function __construct(FormFactoryInterface $formFactory, SimpleFormService $service)
+    private EventDispatcherInterface $dispatcher;
+
+    public function __construct(FormFactoryInterface $formFactory, SimpleFormService $service, EventDispatcherInterface $dispatcher)
     {
         $this->formFactory = $formFactory;
         $this->service = $service;
+        $this->dispatcher = $dispatcher;
     }
 
     public function action(Info $info)
@@ -36,6 +41,7 @@ class Form extends AbstractTemplateAreabrick
 
             if ($form->isSubmitted() && $form->isValid()) {
                 if ($this->service->validate($formObject, $info->getRequest()->get(SimpleFormType::PREFIX))) {
+                    $this->dispatcher->dispatch(new PreSendMailEvent($formObject), PreSendMailEvent::NAME);
                     $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX));
 
                     foreach ($formObject->getEmailDocuments() as $mailDocument) {
