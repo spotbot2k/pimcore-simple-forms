@@ -17,7 +17,7 @@ use SimpleFormsBundle\Service\SimpleFormService;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 
-class Form extends AbstractTemplateAreabrick
+class SimpleForm extends AbstractTemplateAreabrick
 {
     private FormFactoryInterface $formFactory;
 
@@ -53,6 +53,10 @@ class Form extends AbstractTemplateAreabrick
                         $mail->setDocument($mailDocument);
                         $mail->setParams($params);
                         $mail->send();
+                    }
+
+                    if (!empty($formObject->getSuccessRedirect())) {
+                        $info->setParam('redirect', $formObject->getSuccessRedirect()->getFullPath());
                     }
                 }
             }
