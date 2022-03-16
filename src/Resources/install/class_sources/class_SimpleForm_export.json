@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1647035544,
+    "modificationDate": 1647442666,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -58,7 +58,7 @@
                         "childs": [
                             {
                                 "fieldtype": "panel",
-                                "layout": "fit",
+                                "layout": "",
                                 "border": true,
                                 "name": "Fields",
                                 "type": null,
