@@ -24,3 +24,4 @@ composer require spotbot2k/pimcore-simple-forms
 ## Configuration
 
 1. [Basic Configuration](docs/01_Basic_Configuration.md)
+2. [02_Advanced_Example.md](docs/02_Advanced_Example.md)
