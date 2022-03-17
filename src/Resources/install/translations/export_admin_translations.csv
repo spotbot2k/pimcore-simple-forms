@@ -1,5 +1,5 @@
 ﻿﻿"key";"cs";"de";"en";"es";"fa";"fr";"hu";"it";"ja";"nl";"pl";"pt";"ru";"sk";"sv";"th";"tr";"uk";"pt_BR";"sv_FI";"zh_Hans"
-pimcore_simple_forms.be.accept";"";"Accept";"Accept";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.accept";"";"Accept";"Accept";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.accept.tooltip";"";"Mögliche Datentypen";"Restrict types via HTML5 accept attribute";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.autocomplete";"";"Autocomplete";"Autocomplete";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.bootstrap_3";"";"Bootstrap 3";"Bootstrap 3";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
