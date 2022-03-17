@@ -8,6 +8,7 @@
 
 namespace SimpleFormsBundle\Service;
 
+use Pimcore\Model\Asset;
 use Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData;
 use Pimcore\Model\DataObject\SimpleForm;
 use SimpleFormsBundle\Form\SimpleFormType;
@@ -27,6 +28,44 @@ class SimpleFormService
         }
 
         return true;
+    }
+
+    public function handleUploads(SimpleForm $form, array $data): array
+    {
+        $uploadedFiles = [];
+
+        foreach ($form->getFields() as $idx => $field) {
+            $uploadedFiles[$field->getSlug()] = $this->uploadFile($field, $data['fields']['items'][$idx]);
+        }
+
+        return $uploadedFiles;
+    }
+
+    private function uploadFile(AbstractData $field, $submitedData): array
+    {
+        if ($field->getType() !== 'SimpleFormFile' || is_null($submitedData)) {
+            return [];
+        }
+
+        $uploadedFiles = [];
+
+        foreach ($submitedData['file'] as $file) {
+            $parent = $field->getUploadPath() ?: Asset::getById(1);
+            $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            if ($field->getRandomizeName()) {
+                $name = uniqid();
+            }
+
+            $asset = new Asset();
+            $asset->setFilename(sprintf('%s.%s', $name, $file->guessExtension()));
+            $asset->setData(file_get_contents($file->getPathname()));
+            $asset->setParent($parent);
+            $asset->save();
+
+            $uploadedFiles[$asset->getId()] = $asset;
+        }
+
+        return $uploadedFiles;
     }
 
     private function validateField(AbstractData $field, $submitedData): bool

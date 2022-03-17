@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormEvent;
 
 class SimpleFormMultipleChoise
 {
-    public static function renderQuestion(FormEvent &$event): void
+    public static function renderField(FormEvent &$event): void
     {
         $type = $event->getData()->getInputType();
         $options = [];
@@ -26,7 +26,7 @@ class SimpleFormMultipleChoise
             'label'      => $event->getData()->getLabel(),
             'help_html'  => true,
             'empty_data' => null,
-            'required'   => $event->getData()->getRequired() ? 'on' : 'off',
+            'required'   => $event->getData()->getRequired(),
             'choices'    => $options,
             'multiple'   => ($type === 'checkbox'),
             'expanded'   => ($type !== 'select'),

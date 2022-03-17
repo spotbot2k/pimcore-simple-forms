@@ -19,7 +19,7 @@ class EmailController extends FrontendController
      *
      * @return Response
      */
-    public function mailAction(Request $request)
+    public function mailAction(Request $request): Response
     {
         return $this->render('@SimpleForms/layouts/email.html.twig');
     }

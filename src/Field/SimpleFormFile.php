@@ -8,21 +8,23 @@
 
 namespace SimpleFormsBundle\Field;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormEvent;
 
-class SimpleFormTextarea
+class SimpleFormFile
 {
     public static function renderField(FormEvent &$event): void
     {
-        $event->getForm()->add($event->getData()->getSlug(), TextareaType::class, [
+        $event->getForm()->add($event->getData()->getSlug(), FileType::class, [
             'mapped'     => false,
             'label'      => $event->getData()->getLabel(),
             'help_html'  => true,
             'empty_data' => null,
             'required'   => $event->getData()->getRequired(),
+            'multiple'   => $event->getData()->getMultiple(),
             'attr'       => [
-                'rows'   => $event->getData()->getRows(),
+                'accept' => $event->getData()->getAccept(),
+                'size'   => intval($event->getData()->getMaxSize()) * 1024 * 1024,
             ],
         ]);
     }

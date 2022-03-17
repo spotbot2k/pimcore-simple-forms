@@ -9,6 +9,7 @@
 namespace SimpleFormsBundle\Event;
 
 use Pimcore\Model\DataObject\SimpleForm;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
 
 class PreSendMailEvent extends Event
@@ -17,13 +18,21 @@ class PreSendMailEvent extends Event
 
     protected SimpleForm $form;
 
-    public function __construct(SimpleForm $form)
+    protected Request $request;
+
+    public function __construct(SimpleForm $form, Request $request)
     {
         $this->form = $form;
+        $this->request = $request;
     }
 
     public function getFormObject()
     {
         return $this->form;
+    }
+
+    public function getRequest()
+    {
+        return $this->request;
     }
 }

@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormEvent;
 
 class SimpleFormInputField
 {
-    public static function renderQuestion(FormEvent &$event): void
+    public static function renderField(FormEvent &$event): void
     {
         $class = 'TextType';
 
@@ -58,7 +58,7 @@ class SimpleFormInputField
             'label'      => $event->getData()->getLabel(),
             'help_html'  => true,
             'empty_data' => null,
-            'required'   => $event->getData()->getRequired() ? 'on' : 'off',
+            'required'   => $event->getData()->getRequired(),
             'attr'       => [
                 'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
                 'placeholder'  => $event->getData()->getPlaceholder(),

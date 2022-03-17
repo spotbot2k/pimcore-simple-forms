@@ -34,6 +34,14 @@ class SimpleForm extends AbstractTemplateAreabrick
         $this->dispatcher = $dispatcher;
     }
 
+    /**
+     * Disables autodiscovery of the template - we need it to enable Pimcore 6.9 support
+     */
+    public function getTemplate()
+    {
+        return '@SimpleForms/areas/simple-form/view.html.twig';
+    }
+
     public function action(Info $info): ?Response
     {
         $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')->getElement();
@@ -43,8 +51,9 @@ class SimpleForm extends AbstractTemplateAreabrick
 
             if ($form->isSubmitted() && $form->isValid()) {
                 if ($this->service->validate($formObject, $info->getRequest()->get(SimpleFormType::PREFIX))) {
-                    $this->dispatcher->dispatch(new PreSendMailEvent($formObject), PreSendMailEvent::NAME);
-                    $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX));
+                    $this->dispatcher->dispatch(new PreSendMailEvent($formObject, $info->getRequest()), PreSendMailEvent::NAME);
+                    $files = $this->service->handleUploads($formObject, $info->getRequest()->files->get(SimpleFormType::PREFIX));
+                    $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX), $files);
 
                     foreach ($formObject->getEmailDocuments() as $mailDocument) {
                         $mailDocument->setTo($this->renderString($mailDocument->getTo(), $params));
@@ -71,12 +80,18 @@ class SimpleForm extends AbstractTemplateAreabrick
         return null;
     }
 
-    private function parseDataForMail(array $formData): array
+    private function parseDataForMail(array $formData, $files = []): array
     {
         $result = [];
 
         foreach ($formData['fields']['items'] as $idx => $field) {
             $result = array_merge($result, $field);
+        }
+
+        foreach ($files as $key => $file) {
+            if (!array_key_exists($key, $result)) {
+                $result[$key] = $file;
+            }
         }
 
         return $result;
