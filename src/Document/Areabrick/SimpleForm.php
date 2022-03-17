@@ -16,6 +16,8 @@ use SimpleFormsBundle\Form\SimpleFormType;
 use SimpleFormsBundle\Service\SimpleFormService;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class SimpleForm extends AbstractTemplateAreabrick
 {
@@ -32,7 +34,7 @@ class SimpleForm extends AbstractTemplateAreabrick
         $this->dispatcher = $dispatcher;
     }
 
-    public function action(Info $info)
+    public function action(Info $info): ?Response
     {
         $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')->getElement();
         if (!is_null($formObject)) {
@@ -56,7 +58,7 @@ class SimpleForm extends AbstractTemplateAreabrick
                     }
 
                     if (!empty($formObject->getSuccessRedirect())) {
-                        $info->setParam('redirect', $formObject->getSuccessRedirect()->getFullPath());
+                        return new RedirectResponse($formObject->getSuccessRedirect()->getFullPath());
                     }
                 }
             }
@@ -65,6 +67,8 @@ class SimpleForm extends AbstractTemplateAreabrick
         } else {
             $info->setParam('form', null);
         }
+
+        return null;
     }
 
     private function parseDataForMail(array $formData): array
