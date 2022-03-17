@@ -19,9 +19,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SimpleFormType extends AbstractType
 {
-    const PREFIX = 'simple_form';
+    public const PREFIX = 'simple_form';
 
-    const HONEYPOT_FIELD_NAME = 'email';
+    public const HONEYPOT_FIELD_NAME = 'email';
 
     /**
      * {@inheritdoc}
