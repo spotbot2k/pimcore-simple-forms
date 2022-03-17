@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1647442666,
+    "modificationDate": 1647532246,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -12,14 +12,15 @@
     "showVariants": false,
     "layoutDefinitions": {
         "fieldtype": "panel",
+        "labelWidth": 100,
         "layout": null,
         "border": false,
         "name": "pimcore_root",
         "type": null,
         "region": null,
         "title": null,
-        "width": 0,
-        "height": 0,
+        "width": null,
+        "height": null,
         "collapsible": false,
         "collapsed": false,
         "bodyStyle": null,
@@ -58,6 +59,7 @@
                         "childs": [
                             {
                                 "fieldtype": "panel",
+                                "labelWidth": 100,
                                 "layout": "",
                                 "border": true,
                                 "name": "Fields",
@@ -74,10 +76,12 @@
                                 "childs": [
                                     {
                                         "fieldtype": "fieldcollections",
+                                        "phpdocType": "\\Pimcore\\Model\\DataObject\\Fieldcollection",
                                         "allowedTypes": [
                                             "SimpleFormInputField",
                                             "SimpleFormTextarea",
-                                            "SimpleFormMultipleChoise"
+                                            "SimpleFormMultipleChoise",
+                                            "SimpleFormFile"
                                         ],
                                         "lazyLoading": true,
                                         "maxItems": "",
@@ -103,12 +107,11 @@
                                     }
                                 ],
                                 "locked": false,
-                                "icon": "",
-                                "labelWidth": 100,
-                                "labelAlign": "left"
+                                "icon": ""
                             },
                             {
                                 "fieldtype": "panel",
+                                "labelWidth": 100,
                                 "layout": "",
                                 "border": true,
                                 "name": "Security",
@@ -126,6 +129,7 @@
                                     {
                                         "fieldtype": "checkbox",
                                         "defaultValue": 0,
+                                        "phpdocType": "bool",
                                         "name": "useHoneyPot",
                                         "title": "pimcore_simple_forms.be.useHoneyPot",
                                         "tooltip": "",
@@ -144,9 +148,7 @@
                                     }
                                 ],
                                 "locked": false,
-                                "icon": "",
-                                "labelWidth": 100,
-                                "labelAlign": "left"
+                                "icon": ""
                             }
                         ],
                         "locked": false,
@@ -154,6 +156,7 @@
                     },
                     {
                         "fieldtype": "panel",
+                        "labelWidth": 100,
                         "layout": null,
                         "border": true,
                         "name": "Output",
@@ -221,6 +224,7 @@
                                 "optionsProviderClass": "",
                                 "optionsProviderData": "",
                                 "columnLength": 190,
+                                "phpdocType": "string",
                                 "dynamicOptions": false,
                                 "name": "layout",
                                 "title": "pimcore_simple_forms.be.layout",
@@ -244,6 +248,7 @@
                                 "height": "",
                                 "maxItems": "",
                                 "assetUploadPath": "",
+                                "phpdocType": "array",
                                 "relationType": true,
                                 "objectsAllowed": false,
                                 "assetsAllowed": false,
@@ -254,7 +259,6 @@
                                         "documentTypes": "email"
                                     }
                                 ],
-                                "enableTextSelection": false,
                                 "classes": [],
                                 "pathFormatterClass": "",
                                 "name": "emailDocuments",
@@ -276,6 +280,7 @@
                                 "width": "",
                                 "assetUploadPath": "",
                                 "relationType": true,
+                                "phpdocType": "\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject",
                                 "objectsAllowed": false,
                                 "assetsAllowed": false,
                                 "assetTypes": [],
@@ -303,25 +308,20 @@
                             }
                         ],
                         "locked": false,
-                        "icon": "",
-                        "labelWidth": 0,
-                        "labelAlign": "left"
+                        "icon": ""
                     }
                 ],
                 "locked": false
             }
         ],
         "locked": false,
-        "icon": null,
-        "labelWidth": 100,
-        "labelAlign": "left"
+        "icon": null
     },
-    "icon": "",
+    "icon": "\/bundles\/pimcoreadmin\/img\/flat-color-icons\/fieldset.svg",
     "previewUrl": "",
     "group": "Simple Forms",
     "showAppLoggerTab": false,
     "linkGeneratorReference": "",
-    "previewGeneratorReference": "",
     "compositeIndices": [],
     "generateTypeDeclarations": true,
     "showFieldLookup": false,

@@ -9,3 +9,5 @@ Lets consider the most simple scenario - a form that sends a message to the owne
 5. Drag you email documents onto the output tab of the form object.
 6. Use the "Simple Form Object" aeriabrick on any page to render the form.
 7. Done
+
+**Warning!**: The provided email controller will not work in pimcore 6.9, you will need to implement your own.
