@@ -8,10 +8,10 @@
 
 namespace SimpleFormsBundle\Service;
 
+use Pimcore\Model\Asset;
 use Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData;
 use Pimcore\Model\DataObject\SimpleForm;
 use SimpleFormsBundle\Form\SimpleFormType;
-use Pimcore\Model\Asset;
 
 class SimpleFormService
 {
@@ -43,7 +43,7 @@ class SimpleFormService
 
     private function uploadFile(AbstractData $field, $submitedData): array
     {
-        if ($field->getType() !== "SimpleFormFile" || is_null($submitedData)) {
+        if ($field->getType() !== 'SimpleFormFile' || is_null($submitedData)) {
             return [];
         }
 
@@ -57,7 +57,7 @@ class SimpleFormService
             }
 
             $asset = new Asset();
-            $asset->setFilename(sprintf("%s.%s", $name, $file->guessExtension()));
+            $asset->setFilename(sprintf('%s.%s', $name, $file->guessExtension()));
             $asset->setData(file_get_contents($file->getPathname()));
             $asset->setParent($parent);
             $asset->save();

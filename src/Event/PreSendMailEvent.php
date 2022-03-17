@@ -9,8 +9,8 @@
 namespace SimpleFormsBundle\Event;
 
 use Pimcore\Model\DataObject\SimpleForm;
-use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class PreSendMailEvent extends Event
 {

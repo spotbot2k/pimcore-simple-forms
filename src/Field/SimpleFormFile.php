@@ -8,7 +8,6 @@
 
 namespace SimpleFormsBundle\Field;
 
-use Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormEvent;
 
