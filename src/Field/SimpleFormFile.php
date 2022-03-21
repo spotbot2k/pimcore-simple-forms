@@ -10,11 +10,14 @@ namespace SimpleFormsBundle\Field;
 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Validator\Constraints\File;
 
 class SimpleFormFile
 {
     public static function renderField(FormEvent &$event): void
     {
+        $maxSizeMb = intval($event->getData()->getMaxSize()) * 1024 * 1024;
+
         $event->getForm()->add($event->getData()->getSlug(), FileType::class, [
             'mapped'     => false,
             'label'      => $event->getData()->getLabel(),
@@ -24,7 +27,10 @@ class SimpleFormFile
             'multiple'   => $event->getData()->getMultiple(),
             'attr'       => [
                 'accept' => $event->getData()->getAccept(),
-                'size'   => intval($event->getData()->getMaxSize()) * 1024 * 1024,
+                'size'   => $maxSizeMb,
+            ],
+            'constraints' => [
+                new File([], $maxSizeMb),
             ],
         ]);
     }

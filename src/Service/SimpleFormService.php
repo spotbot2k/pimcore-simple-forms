@@ -53,6 +53,11 @@ class SimpleFormService
 
         foreach ($submitedData as $file) {
             $parent = $field->getUploadPath() ?: Asset::getById(1);
+
+            if (is_null($file)) {
+                continue;
+            }
+
             $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             if ($field->getRandomizeName()) {
                 $name = uniqid();

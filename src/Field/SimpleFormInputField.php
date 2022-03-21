@@ -9,6 +9,7 @@
 namespace SimpleFormsBundle\Field;
 
 use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SimpleFormInputField
 {
@@ -52,14 +53,20 @@ class SimpleFormInputField
         }
 
         $class = sprintf("Symfony\Component\Form\Extension\Core\Type\%s", $class);
+        $constraints = [];
+
+        if ($event->getData()->getRequired()) {
+            $constraints[] = new NotBlank();
+        }
 
         $event->getForm()->add($event->getData()->getSlug(), $class, [
-            'mapped'     => false,
-            'label'      => $event->getData()->getLabel(),
-            'help_html'  => true,
-            'empty_data' => null,
-            'required'   => $event->getData()->getRequired(),
-            'attr'       => [
+            'mapped'      => false,
+            'label'       => $event->getData()->getLabel(),
+            'help_html'   => true,
+            'empty_data'  => null,
+            'required'    => $event->getData()->getRequired(),
+            'constraints' => $constraints,
+            'attr'        => [
                 'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
                 'placeholder'  => $event->getData()->getPlaceholder(),
                 'type'         => $event->getData()->getInputType(),
