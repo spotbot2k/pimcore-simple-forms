@@ -22,7 +22,7 @@ class SimpleFormService
         }
 
         foreach ($form->getFields() as $idx => $field) {
-            if (!$this->validateField($field, $data['fields']['items'][$idx])) {
+            if (array_key_exists($idx, $data['fields']['items']) && !$this->validateField($field, $data['fields']['items'][$idx])) {
                 return false;
             }
         }
@@ -35,7 +35,9 @@ class SimpleFormService
         $uploadedFiles = [];
 
         foreach ($form->getFields() as $idx => $field) {
-            $uploadedFiles[$field->getSlug()] = $this->uploadFile($field, $data['fields']['items'][$idx]);
+            if (array_key_exists($idx, $data['fields']['items'])) {
+                $uploadedFiles[$field->getSlug()] = $this->uploadFile($field, $data['fields']['items'][$idx]);
+            }
         }
 
         return $uploadedFiles;
@@ -49,7 +51,7 @@ class SimpleFormService
 
         $uploadedFiles = [];
 
-        foreach ($submitedData['file'] as $file) {
+        foreach ($submitedData as $file) {
             $parent = $field->getUploadPath() ?: Asset::getById(1);
             $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             if ($field->getRandomizeName()) {

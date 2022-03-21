@@ -22,6 +22,10 @@
             {% if useHoneyPot %}
                 {{ form_widget(form.email, {attr: {class: 'form-control', style: 'display:none !important', tabindex: '-1', autocomplete: 'off'}}) }}
             {% endif %}
+            
+            {{ form_widget(form.fields) }}
+
+            {{ form_widget(form.submit, {'label': ('Submit' | trans)}) }}
         {{ form_end(form) }}
     </section>
 {% endif %}
