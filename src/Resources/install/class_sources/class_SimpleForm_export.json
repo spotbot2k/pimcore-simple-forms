@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1647532246,
+    "modificationDate": 1647870715,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -12,15 +12,14 @@
     "showVariants": false,
     "layoutDefinitions": {
         "fieldtype": "panel",
-        "labelWidth": 100,
         "layout": null,
         "border": false,
         "name": "pimcore_root",
         "type": null,
         "region": null,
         "title": null,
-        "width": null,
-        "height": null,
+        "width": 0,
+        "height": 0,
         "collapsible": false,
         "collapsed": false,
         "bodyStyle": null,
@@ -59,7 +58,6 @@
                         "childs": [
                             {
                                 "fieldtype": "panel",
-                                "labelWidth": 100,
                                 "layout": "",
                                 "border": true,
                                 "name": "Fields",
@@ -76,7 +74,6 @@
                                 "childs": [
                                     {
                                         "fieldtype": "fieldcollections",
-                                        "phpdocType": "\\Pimcore\\Model\\DataObject\\Fieldcollection",
                                         "allowedTypes": [
                                             "SimpleFormInputField",
                                             "SimpleFormTextarea",
@@ -107,11 +104,12 @@
                                     }
                                 ],
                                 "locked": false,
-                                "icon": ""
+                                "icon": "",
+                                "labelWidth": 100,
+                                "labelAlign": "left"
                             },
                             {
                                 "fieldtype": "panel",
-                                "labelWidth": 100,
                                 "layout": "",
                                 "border": true,
                                 "name": "Security",
@@ -129,7 +127,6 @@
                                     {
                                         "fieldtype": "checkbox",
                                         "defaultValue": 0,
-                                        "phpdocType": "bool",
                                         "name": "useHoneyPot",
                                         "title": "pimcore_simple_forms.be.useHoneyPot",
                                         "tooltip": "",
@@ -148,15 +145,16 @@
                                     }
                                 ],
                                 "locked": false,
-                                "icon": ""
+                                "icon": "",
+                                "labelWidth": 100,
+                                "labelAlign": "left"
                             }
                         ],
                         "locked": false,
-                        "icon": ""
+                        "icon": "\/bundles\/pimcoreadmin\/img\/flat-color-icons\/list.svg"
                     },
                     {
                         "fieldtype": "panel",
-                        "labelWidth": 100,
                         "layout": null,
                         "border": true,
                         "name": "Output",
@@ -224,7 +222,6 @@
                                 "optionsProviderClass": "",
                                 "optionsProviderData": "",
                                 "columnLength": 190,
-                                "phpdocType": "string",
                                 "dynamicOptions": false,
                                 "name": "layout",
                                 "title": "pimcore_simple_forms.be.layout",
@@ -243,44 +240,10 @@
                                 "defaultValueGenerator": ""
                             },
                             {
-                                "fieldtype": "manyToManyRelation",
-                                "width": "",
-                                "height": "",
-                                "maxItems": "",
-                                "assetUploadPath": "",
-                                "phpdocType": "array",
-                                "relationType": true,
-                                "objectsAllowed": false,
-                                "assetsAllowed": false,
-                                "assetTypes": [],
-                                "documentsAllowed": true,
-                                "documentTypes": [
-                                    {
-                                        "documentTypes": "email"
-                                    }
-                                ],
-                                "classes": [],
-                                "pathFormatterClass": "",
-                                "name": "emailDocuments",
-                                "title": "pimcore_simple_forms.be.emailDocuments",
-                                "tooltip": "",
-                                "mandatory": false,
-                                "noteditable": false,
-                                "index": false,
-                                "locked": false,
-                                "style": "",
-                                "permissions": null,
-                                "datatype": "data",
-                                "invisible": false,
-                                "visibleGridView": false,
-                                "visibleSearch": false
-                            },
-                            {
                                 "fieldtype": "manyToOneRelation",
                                 "width": "",
                                 "assetUploadPath": "",
                                 "relationType": true,
-                                "phpdocType": "\\Pimcore\\Model\\Document\\Page | \\Pimcore\\Model\\Document\\Snippet | \\Pimcore\\Model\\Document | \\Pimcore\\Model\\Asset | \\Pimcore\\Model\\DataObject\\AbstractObject",
                                 "objectsAllowed": false,
                                 "assetsAllowed": false,
                                 "assetTypes": [],
@@ -305,23 +268,61 @@
                                 "invisible": false,
                                 "visibleGridView": false,
                                 "visibleSearch": false
+                            },
+                            {
+                                "fieldtype": "manyToManyRelation",
+                                "width": "",
+                                "height": "",
+                                "maxItems": "",
+                                "assetUploadPath": "",
+                                "relationType": true,
+                                "objectsAllowed": false,
+                                "assetsAllowed": false,
+                                "assetTypes": [],
+                                "documentsAllowed": true,
+                                "documentTypes": [
+                                    {
+                                        "documentTypes": "email"
+                                    }
+                                ],
+                                "enableTextSelection": false,
+                                "classes": [],
+                                "pathFormatterClass": "",
+                                "name": "emailDocuments",
+                                "title": "pimcore_simple_forms.be.emailDocuments",
+                                "tooltip": "",
+                                "mandatory": false,
+                                "noteditable": false,
+                                "index": false,
+                                "locked": false,
+                                "style": "",
+                                "permissions": null,
+                                "datatype": "data",
+                                "invisible": false,
+                                "visibleGridView": false,
+                                "visibleSearch": false
                             }
                         ],
                         "locked": false,
-                        "icon": ""
+                        "icon": "\/bundles\/pimcoreadmin\/img\/flat-color-icons\/package.svg",
+                        "labelWidth": 100,
+                        "labelAlign": "left"
                     }
                 ],
                 "locked": false
             }
         ],
         "locked": false,
-        "icon": null
+        "icon": null,
+        "labelWidth": 100,
+        "labelAlign": "left"
     },
     "icon": "\/bundles\/pimcoreadmin\/img\/flat-color-icons\/fieldset.svg",
     "previewUrl": "",
     "group": "Simple Forms",
     "showAppLoggerTab": false,
     "linkGeneratorReference": "",
+    "previewGeneratorReference": "",
     "compositeIndices": [],
     "generateTypeDeclarations": true,
     "showFieldLookup": false,
