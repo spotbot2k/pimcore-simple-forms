@@ -12,6 +12,7 @@ use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
 use Pimcore\Mail;
 use Pimcore\Model\Document\Editable\Area\Info;
 use SimpleFormsBundle\Event\PreSendMailEvent;
+use SimpleFormsBundle\Event\PostSendMailEvent;
 use SimpleFormsBundle\Form\SimpleFormType;
 use SimpleFormsBundle\Service\SimpleFormService;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -70,6 +71,8 @@ class SimpleForm extends AbstractTemplateAreabrick
                         $mail->setParams($params);
                         $mail->send();
                     }
+
+                    $this->dispatcher->dispatch(new PostSendMailEvent($formObject, $params), PostSendMailEvent::NAME);
 
                     if (!empty($formObject->getSuccessRedirect())) {
                         return new RedirectResponse($formObject->getSuccessRedirect()->getFullPath());
