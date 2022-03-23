@@ -60,16 +60,13 @@ class Installer extends SettingsStoreAwareInstaller
 
     private function installClass($classname, $filepath): void
     {
-        $class = ClassDefinition::getByName($classname);
-        if (!$class) {
-            $class = new ClassDefinition();
-            $class->setName($classname);
-            $class->setGroup('SimpleForms');
+        $class = new ClassDefinition();
+        $class->setName($classname);
+        $class->setGroup('SimpleForms');
 
-            $success = Service::importClassDefinitionFromJson($class, file_get_contents($filepath));
-            if (!$success) {
-                Logger::err("Could not import $classname Class.");
-            }
+        $success = Service::importClassDefinitionFromJson($class, file_get_contents($filepath));
+        if (!$success) {
+            Logger::err("Could not import $classname Class.");
         }
     }
 
@@ -89,15 +86,12 @@ class Installer extends SettingsStoreAwareInstaller
 
     public function installFieldCollection($key, $filepath)
     {
-        $fieldCollection = Fieldcollection\Definition::getByKey($key);
-        if (!$fieldCollection) {
-            $fieldCollection = new Fieldcollection\Definition();
-            $fieldCollection->setKey($key);
-            $success = Service::importFieldCollectionFromJson($fieldCollection, file_get_contents($filepath));
+        $fieldCollection = new Fieldcollection\Definition();
+        $fieldCollection->setKey($key);
+        $success = Service::importFieldCollectionFromJson($fieldCollection, file_get_contents($filepath));
 
-            if (!$success) {
-                throw new InstallationException(sprintf('Failed to import field collection "%s"', $key));
-            }
+        if (!$success) {
+            throw new InstallationException(sprintf('Failed to import field collection "%s"', $key));
         }
     }
 
