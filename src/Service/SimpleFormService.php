@@ -21,12 +21,6 @@ class SimpleFormService
             return false;
         }
 
-        foreach ($form->getFields() as $idx => $field) {
-            if (array_key_exists($idx, $data['fields']['items']) && !$this->validateField($field, $data['fields']['items'][$idx])) {
-                return false;
-            }
-        }
-
         return true;
     }
 
@@ -73,14 +67,5 @@ class SimpleFormService
         }
 
         return $uploadedFiles;
-    }
-
-    private function validateField(AbstractData $field, $submitedData): bool
-    {
-        if ($field->getRequired()) {
-            return !empty($submitedData[$field->getSlug()]);
-        }
-
-        return true;
     }
 }
