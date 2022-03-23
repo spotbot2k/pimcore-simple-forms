@@ -52,7 +52,12 @@ class SimpleForm extends AbstractTemplateAreabrick
             if ($form->isSubmitted() && $form->isValid()) {
                 if ($this->service->validate($formObject, $info->getRequest()->get(SimpleFormType::PREFIX))) {
                     $this->dispatcher->dispatch(new PreSendMailEvent($formObject, $info->getRequest()), PreSendMailEvent::NAME);
-                    $files = $this->service->handleUploads($formObject, $info->getRequest()->files->get(SimpleFormType::PREFIX));
+                    $files = [];
+
+                    if (!empty($info->getRequest()->files->get(SimpleFormType::PREFIX))) {
+                        $files = $this->service->handleUploads($formObject, $info->getRequest()->files->get(SimpleFormType::PREFIX));
+                    }
+
                     $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX), $files);
 
                     foreach ($formObject->getEmailDocuments() as $mailDocument) {
@@ -80,7 +85,7 @@ class SimpleForm extends AbstractTemplateAreabrick
         return null;
     }
 
-    private function parseDataForMail(array $formData, $files = []): array
+    private function parseDataForMail(array $formData, array $files = []): array
     {
         $result = [];
 
