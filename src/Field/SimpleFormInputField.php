@@ -70,6 +70,7 @@ class SimpleFormInputField
                 'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
                 'placeholder'  => $event->getData()->getPlaceholder(),
                 'type'         => $event->getData()->getInputType(),
+                'value'        => $event->getData()->getDefaultValue(),
             ],
         ]);
     }

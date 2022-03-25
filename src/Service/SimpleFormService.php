@@ -12,6 +12,7 @@ use Pimcore\Model\Asset;
 use Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData;
 use Pimcore\Model\DataObject\SimpleForm;
 use SimpleFormsBundle\Form\SimpleFormType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class SimpleFormService
 {
@@ -45,27 +46,41 @@ class SimpleFormService
 
         $uploadedFiles = [];
 
-        foreach ($submitedData as $file) {
-            $parent = $field->getUploadPath() ?: Asset::getById(1);
-
-            if (is_null($file)) {
+        foreach ($submitedData as $files) {
+            if (is_null($files)) {
                 continue;
             }
 
-            $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-            if ($field->getRandomizeName()) {
-                $name = uniqid();
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    $asset = $this-> processFile($file, $field);
+                    $uploadedFiles[$asset->getId()] = $asset;
+                }
+            } else {
+                $asset = $this-> processFile($files, $field);
+                $uploadedFiles[$asset->getId()] = $asset;
             }
-
-            $asset = new Asset();
-            $asset->setFilename(sprintf('%s.%s', $name, $file->guessExtension()));
-            $asset->setData(file_get_contents($file->getPathname()));
-            $asset->setParent($parent);
-            $asset->save();
 
             $uploadedFiles[$asset->getId()] = $asset;
         }
 
         return $uploadedFiles;
+    }
+
+    private function processFile(UploadedFile $file, AbstractData $field): Asset
+    {
+        $parent = $field->getUploadPath() ?: Asset::getById(1);
+        $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        if ($field->getRandomizeName()) {
+            $name = uniqid();
+        }
+
+        $asset = new Asset();
+        $asset->setFilename(sprintf('%s.%s', $name, $file->guessExtension()));
+        $asset->setData(file_get_contents($file->getPathname()));
+        $asset->setParent($parent);
+        $asset->save();
+
+        return $asset;
     }
 }

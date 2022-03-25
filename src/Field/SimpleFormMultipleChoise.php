@@ -18,7 +18,7 @@ class SimpleFormMultipleChoise
         $type = $event->getData()->getInputType();
         $options = [];
         foreach ($event->getData()->getOptions() as $option) {
-            $options[$option['key']] = $option['value'];
+            $options[$option['value']] = $option['key'];
         }
 
         $event->getForm()->add($event->getData()->getSlug(), ChoiceType::class, [
@@ -26,10 +26,11 @@ class SimpleFormMultipleChoise
             'label'      => $event->getData()->getLabel(),
             'help_html'  => true,
             'empty_data' => null,
-            'required'   => $event->getData()->getRequired(),
+            'required'   => $event->getData()->getRequired() || ($type === 'radio'),
             'choices'    => $options,
             'multiple'   => ($type === 'checkbox'),
             'expanded'   => ($type !== 'select'),
+            'data'       => $event->getData()->getDefaultValue(),
         ]);
     }
 }
