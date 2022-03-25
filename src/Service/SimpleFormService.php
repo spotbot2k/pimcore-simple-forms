@@ -53,11 +53,11 @@ class SimpleFormService
 
             if (is_array($files)) {
                 foreach ($files as $file) {
-                    $asset = $this-> processFile($file, $field);
+                    $asset = $this->processFile($file, $field);
                     $uploadedFiles[$asset->getId()] = $asset;
                 }
             } else {
-                $asset = $this-> processFile($files, $field);
+                $asset = $this->processFile($files, $field);
                 $uploadedFiles[$asset->getId()] = $asset;
             }
 

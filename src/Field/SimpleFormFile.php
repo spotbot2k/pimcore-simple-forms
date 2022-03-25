@@ -24,7 +24,6 @@ class SimpleFormFile
         } else {
             $constraints = new File([], $maxSizeMb);
         }
-        
 
         $event->getForm()->add($event->getData()->getSlug(), FileType::class, [
             'mapped'      => false,
