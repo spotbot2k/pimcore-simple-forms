@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1648232684,
+    "modificationDate": 1648455487,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -145,7 +145,7 @@
                                     },
                                     {
                                         "fieldtype": "numeric",
-                                        "width": 25,
+                                        "width": 120,
                                         "defaultValue": null,
                                         "integer": true,
                                         "unsigned": true,

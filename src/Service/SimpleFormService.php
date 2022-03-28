@@ -22,6 +22,13 @@ class SimpleFormService
             return false;
         }
 
+        if ($form->getTimedSubmission()) {
+            $timeTaken = time() - $data[SimpleFormType::INITS_FIELD_NAME];
+            if ($timeTaken < $form->getTimedSubmission()) {
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -60,8 +67,6 @@ class SimpleFormService
                 $asset = $this->processFile($files, $field);
                 $uploadedFiles[$asset->getId()] = $asset;
             }
-
-            $uploadedFiles[$asset->getId()] = $asset;
         }
 
         return $uploadedFiles;

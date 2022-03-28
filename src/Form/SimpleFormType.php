@@ -10,6 +10,7 @@ namespace SimpleFormsBundle\Form;
 
 use Pimcore\Model\DataObject\SimpleForm;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,6 +23,7 @@ class SimpleFormType extends AbstractType
     public const PREFIX = 'simple_form';
 
     public const HONEYPOT_FIELD_NAME = 'email';
+    public const INITS_FIELD_NAME = 'inits';
 
     /**
      * {@inheritdoc}
@@ -32,6 +34,9 @@ class SimpleFormType extends AbstractType
             $event->getForm()->add('fields', SimpleFormFieldCollectionType::class, [ 'label' => false ]);
             if ($event->getData()->getUseHoneyPot()) {
                 $event->getForm()->add(self::HONEYPOT_FIELD_NAME, TextType::class, [ 'required' => false, 'mapped' => false ]);
+            }
+            if ($event->getData()->getTimedSubmission()) {
+                $event->getForm()->add(self::INITS_FIELD_NAME, HiddenType::class, [ 'mapped' => false, 'data' => time() ]);
             }
         });
 
