@@ -23,6 +23,7 @@ class SimpleFormType extends AbstractType
     public const PREFIX = 'simple_form';
 
     public const HONEYPOT_FIELD_NAME = 'email';
+
     public const INITS_FIELD_NAME = 'inits';
 
     /**
