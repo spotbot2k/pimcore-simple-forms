@@ -90,8 +90,11 @@ class SimpleForm extends AbstractTemplateAreabrick
 
     private function parseDataForMail(array $formData, array $files = []): array
     {
-        $result = [];
+        if (!array_key_exists('fields', $formData)) {
+            return [];
+        }
 
+        $result = [];
         foreach ($formData['fields']['items'] as $idx => $field) {
             $result = array_merge($result, $field);
         }
