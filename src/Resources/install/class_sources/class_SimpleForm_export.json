@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1648455487,
+    "modificationDate": 1651764182,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -25,7 +25,7 @@
         "bodyStyle": null,
         "datatype": "layout",
         "permissions": null,
-        "childs": [
+        "children": [
             {
                 "fieldtype": "tabpanel",
                 "border": false,
@@ -41,7 +41,7 @@
                 "bodyStyle": "",
                 "datatype": "layout",
                 "permissions": null,
-                "childs": [
+                "children": [
                     {
                         "fieldtype": "region",
                         "name": "Content",
@@ -55,7 +55,7 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "childs": [
+                        "children": [
                             {
                                 "fieldtype": "panel",
                                 "layout": "",
@@ -71,14 +71,15 @@
                                 "bodyStyle": "",
                                 "datatype": "layout",
                                 "permissions": null,
-                                "childs": [
+                                "children": [
                                     {
                                         "fieldtype": "fieldcollections",
                                         "allowedTypes": [
                                             "SimpleFormInputField",
                                             "SimpleFormTextarea",
                                             "SimpleFormMultipleChoise",
-                                            "SimpleFormFile"
+                                            "SimpleFormFile",
+                                            "SimpleFormConsent"
                                         ],
                                         "lazyLoading": true,
                                         "maxItems": "",
@@ -123,7 +124,7 @@
                                 "bodyStyle": "",
                                 "datatype": "layout",
                                 "permissions": null,
-                                "childs": [
+                                "children": [
                                     {
                                         "fieldtype": "checkbox",
                                         "defaultValue": 0,
@@ -195,7 +196,7 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "childs": [
+                        "children": [
                             {
                                 "fieldtype": "select",
                                 "options": [

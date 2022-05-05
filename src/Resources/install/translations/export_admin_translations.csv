@@ -45,3 +45,5 @@
 "pimcore_simple_forms.be.timedSubmission.tooltip";"";"Setze die Zeit, die ein Mensch für die Bearbeitung brauchen sollte.";"Bots usualy submit the data instantly. Set this value to block any data that was send to fast.";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.uploadPath";"";"Zielordner";"Upload Path";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.useHoneyPot";"";"Honey Pot benutzen";"Use Honey Pot";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.formFieldConsent";"";"Zusage";"Consent";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.help";"";"Beschriftung";"Label";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
