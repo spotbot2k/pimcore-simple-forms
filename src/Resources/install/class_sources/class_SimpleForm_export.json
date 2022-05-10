@@ -1,7 +1,7 @@
 {
     "id": "simpleform",
     "description": "",
-    "modificationDate": 1651764182,
+    "modificationDate": 1652171553,
     "parentClass": "",
     "implementsInterfaces": "",
     "listingParentClass": "",
@@ -197,6 +197,94 @@
                         "datatype": "layout",
                         "permissions": null,
                         "children": [
+                            {
+                                "fieldtype": "fieldcontainer",
+                                "layout": "hbox",
+                                "fieldLabel": "",
+                                "name": "Field Container",
+                                "type": null,
+                                "region": null,
+                                "title": null,
+                                "width": "",
+                                "height": "",
+                                "collapsible": false,
+                                "collapsed": false,
+                                "bodyStyle": "",
+                                "datatype": "layout",
+                                "permissions": null,
+                                "children": [
+                                    {
+                                        "fieldtype": "select",
+                                        "options": [
+                                            {
+                                                "key": "GET",
+                                                "value": "GET"
+                                            },
+                                            {
+                                                "key": "POST",
+                                                "value": "POST"
+                                            },
+                                            {
+                                                "key": "PUT",
+                                                "value": "PUT"
+                                            },
+                                            {
+                                                "key": "PATCH",
+                                                "value": "PATCH"
+                                            },
+                                            {
+                                                "key": "OPTIONS",
+                                                "value": "OPTIONS"
+                                            },
+                                            {
+                                                "key": "DELETE",
+                                                "value": "DELETE"
+                                            }
+                                        ],
+                                        "width": "",
+                                        "defaultValue": "POST",
+                                        "optionsProviderClass": "",
+                                        "optionsProviderData": "",
+                                        "columnLength": 190,
+                                        "dynamicOptions": false,
+                                        "name": "method",
+                                        "title": "pimcore_simple_forms.be.method",
+                                        "tooltip": "",
+                                        "mandatory": false,
+                                        "noteditable": false,
+                                        "index": false,
+                                        "locked": false,
+                                        "style": "",
+                                        "permissions": null,
+                                        "datatype": "data",
+                                        "relationType": false,
+                                        "invisible": false,
+                                        "visibleGridView": false,
+                                        "visibleSearch": false,
+                                        "defaultValueGenerator": ""
+                                    },
+                                    {
+                                        "fieldtype": "link",
+                                        "name": "action",
+                                        "title": "pimcore_simple_forms.be.action",
+                                        "tooltip": "",
+                                        "mandatory": false,
+                                        "noteditable": false,
+                                        "index": false,
+                                        "locked": false,
+                                        "style": "",
+                                        "permissions": null,
+                                        "datatype": "data",
+                                        "relationType": false,
+                                        "invisible": false,
+                                        "visibleGridView": false,
+                                        "visibleSearch": false
+                                    }
+                                ],
+                                "locked": false,
+                                "labelWidth": 0,
+                                "labelAlign": "left"
+                            },
                             {
                                 "fieldtype": "select",
                                 "options": [

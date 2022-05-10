@@ -47,3 +47,5 @@
 "pimcore_simple_forms.be.useHoneyPot";"";"Honey Pot benutzen";"Use Honey Pot";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.formFieldConsent";"";"Zusage";"Consent";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.help";"";"Beschriftung";"Label";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.action";"";"Action";"Action";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.method";"";"Method";"Method";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
