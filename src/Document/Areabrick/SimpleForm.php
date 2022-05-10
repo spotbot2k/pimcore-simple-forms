@@ -45,12 +45,12 @@ class SimpleForm extends AbstractTemplateAreabrick
 
     public function action(Info $info): ?Response
     {
-        $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')?->getElement();
+        $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')->getElement();
         if (!is_null($formObject)) {
             $formBuilder = $this->formFactory->createBuilder(SimpleFormType::class, $formObject);
 
             if (!empty($formObject->getAction())) {
-                $formBuilder->setAction($formObject?->getAction()?->getHref());
+                $formBuilder->setAction($formObject->getAction()->getHref());
                 $formBuilder->setMethod($formObject->getMethod());
             }
 
