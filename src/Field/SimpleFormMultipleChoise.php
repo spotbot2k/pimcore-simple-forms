@@ -30,7 +30,7 @@ class SimpleFormMultipleChoise
             'choices'    => $options,
             'multiple'   => ($type === 'checkbox'),
             'expanded'   => ($type !== 'select'),
-            'data'       => ($type !== 'checkbox') ? $event->getData()->getDefaultValue(): [],
+            'data'       => ($type !== 'checkbox') ? $event->getData()->getDefaultValue() : [],
         ]);
     }
 }
