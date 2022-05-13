@@ -9,7 +9,10 @@
 namespace SimpleFormsBundle\Document\Areabrick;
 
 use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
+use Pimcore\Extension\Document\Areabrick\EditableDialogBoxConfiguration;
+use Pimcore\Extension\Document\Areabrick\EditableDialogBoxInterface;
 use Pimcore\Mail;
+use Pimcore\Model\Document\Editable;
 use Pimcore\Model\Document\Editable\Area\Info;
 use SimpleFormsBundle\Event\PostSendMailEvent;
 use SimpleFormsBundle\Event\PreSendMailEvent;
@@ -19,9 +22,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Pimcore\Extension\Document\Areabrick\EditableDialogBoxConfiguration;
-use Pimcore\Extension\Document\Areabrick\EditableDialogBoxInterface;
-use Pimcore\Model\Document\Editable;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxInterface
@@ -71,7 +71,7 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
                     'classes'  => ['SimpleForm'],
                     'reload'   => true,
                 ],
-                ]
+                ],
             ],
         ]);
 
