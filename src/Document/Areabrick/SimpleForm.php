@@ -140,14 +140,14 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
         $stringValue = '';
         foreach ($formData['fields']['items'] as $idx => $field) {
             $result = array_merge($result, $field);
-            $stringValue .= sprintf("%s: %s%s", key($field), reset($field), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', key($field), reset($field), PHP_EOL);
         }
 
         foreach ($files as $key => $file) {
             if (!array_key_exists($key, $result)) {
                 $result[$key] = $file;
             }
-            $stringValue .= sprintf("%s: %s%s",$key, implode(', ', $file), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', $key, implode(', ', $file), PHP_EOL);
         }
 
         $result['formValue'] = $stringValue;
