@@ -19,6 +19,10 @@ composer require spotbot2k/pimcore-simple-forms
 - Spam protection using honeypot
 - Simple validation of the fields in backend and frontend
 - Send the submitted data via E-Mail
+- Send the submitted data to a custom URL/path so you could
+  - process the data in a custom controller
+  - create login forms
+  - use the form to perform an API call (WIP)
 - Parse to/cc/bcc from the form input
 
 ## Configuration
