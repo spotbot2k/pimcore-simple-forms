@@ -63,14 +63,14 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
             'items' => [
                 [
                     'type'   => 'relation',
-                'label'  => $this->translator->trans('pimcore_simple_forms.be.selected_form_object'),
-                'name'   => 'formObject',
-                'config' => [
-                    'types'    => ['object'],
-                    'subtypes' => ['object'],
-                    'classes'  => ['SimpleForm'],
-                    'reload'   => true,
-                ],
+                    'label'  => $this->translator->trans('pimcore_simple_forms.be.selected_form_object'),
+                    'name'   => 'formObject',
+                    'config' => [
+                        'types'    => ['object'],
+                        'subtypes' => ['object'],
+                        'classes'  => ['SimpleForm'],
+                        'reload'   => true,
+                    ],
                 ],
             ],
         ]);
