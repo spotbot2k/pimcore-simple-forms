@@ -32,6 +32,31 @@ class SimpleFormService
         return true;
     }
 
+    public function parseDataAsArray(array $formData, array $files = []): array
+    {
+        if (!array_key_exists('fields', $formData)) {
+            return [];
+        }
+
+        $result = [];
+        $stringValue = '';
+        foreach ($formData['fields']['items'] as $idx => $field) {
+            $result = array_merge($result, $field);
+            $stringValue .= sprintf('%s: %s%s', key($field), reset($field), PHP_EOL);
+        }
+
+        foreach ($files as $key => $file) {
+            if (!array_key_exists($key, $result)) {
+                $result[$key] = $file;
+            }
+            $stringValue .= sprintf('%s: %s%s', $key, implode(', ', $file), PHP_EOL);
+        }
+
+        $result['formValue'] = $stringValue;
+
+        return $result;
+    }
+
     public function handleUploads(SimpleForm $form, array $data): array
     {
         $uploadedFiles = [];
@@ -45,15 +70,15 @@ class SimpleFormService
         return $uploadedFiles;
     }
 
-    private function uploadFile(AbstractData $field, $submitedData): array
+    private function uploadFile(AbstractData $field, $submittedData): array
     {
-        if ($field->getType() !== 'SimpleFormFile' || is_null($submitedData)) {
+        if ($field->getType() !== 'SimpleFormFile' || is_null($submittedData)) {
             return [];
         }
 
         $uploadedFiles = [];
 
-        foreach ($submitedData as $files) {
+        foreach ($submittedData as $files) {
             if (is_null($files)) {
                 continue;
             }

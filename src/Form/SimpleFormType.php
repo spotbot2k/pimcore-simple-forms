@@ -26,6 +26,8 @@ class SimpleFormType extends AbstractType
 
     public const INITS_FIELD_NAME = 'inits';
 
+    public const REFERER_FIELD_NAME = 'form_referer';
+
     /**
      * {@inheritdoc}
      */
@@ -38,6 +40,9 @@ class SimpleFormType extends AbstractType
             }
             if ($event->getData()->getTimedSubmission()) {
                 $event->getForm()->add(self::INITS_FIELD_NAME, HiddenType::class, [ 'mapped' => false, 'data' => time() ]);
+            }
+            if (!empty($event->getData()->getAction())) {
+                $event->getForm()->add(self::REFERER_FIELD_NAME, HiddenType::class, [ 'mapped' => false, 'data' =>$event->getData()->getId() ]);
             }
         });
 

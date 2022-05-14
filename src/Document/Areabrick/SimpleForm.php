@@ -101,7 +101,7 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
                         $files = $this->service->handleUploads($formObject, $info->getRequest()->files->get(SimpleFormType::PREFIX));
                     }
 
-                    $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX), $files);
+                    $params = $this->service->parseDataAsArray($info->getRequest()->get(SimpleFormType::PREFIX), $files);
 
                     foreach ($formObject->getEmailDocuments() as $mailDocument) {
                         $mailDocument->setTo($this->renderString($mailDocument->getTo(), $params));
@@ -128,31 +128,6 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
         }
 
         return null;
-    }
-
-    private function parseDataForMail(array $formData, array $files = []): array
-    {
-        if (!array_key_exists('fields', $formData)) {
-            return [];
-        }
-
-        $result = [];
-        $stringValue = '';
-        foreach ($formData['fields']['items'] as $idx => $field) {
-            $result = array_merge($result, $field);
-            $stringValue .= sprintf('%s: %s%s', key($field), reset($field), PHP_EOL);
-        }
-
-        foreach ($files as $key => $file) {
-            if (!array_key_exists($key, $result)) {
-                $result[$key] = $file;
-            }
-            $stringValue .= sprintf('%s: %s%s', $key, implode(', ', $file), PHP_EOL);
-        }
-
-        $result['formValue'] = $stringValue;
-
-        return $result;
     }
 
     private function renderString(string $string, array $params): string

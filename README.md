@@ -29,7 +29,7 @@ composer require spotbot2k/pimcore-simple-forms
 
 - [Basic Configuration](docs/01_Basic_Configuration.md)
 - [Advanced Usage](docs/02_Advanced_Usage.md)
-  - Using a custom controller
+  - [Using a custom controller](docs/021_Using_custom_controller.md)
   - Creating a login form
   - [Using events](docs/023_Using_events.md)
   - Perform an API request
