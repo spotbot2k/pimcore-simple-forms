@@ -4,7 +4,7 @@
 
 # Simple Form Builder for Pimcore
 
-Create and modify simple forms in pimcore backend with no code needed. The aim is to provide a simple UI that will be easy enough to be used by a pimcore newbie.
+Create and modify simple forms in [Pimcore](https://github.com/pimcore/pimcore) backend with no code needed. The aim is to provide a simple UI that will be easy enough to be used by a Pimcore newbie.
 
 ## Installation
 
@@ -31,6 +31,6 @@ composer require spotbot2k/pimcore-simple-forms
 - [Advanced Usage](docs/02_Advanced_Usage.md)
   - Using a custom controller
   - Creating a login form
-  - Using events
+  - [Using events](docs/023_Using_events.md)
   - Perform an API request
   - Print a PDF
