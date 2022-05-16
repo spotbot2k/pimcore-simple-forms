@@ -1,17 +1,3 @@
-{% if editmode %}
-    <div class="editmode-label align-middle">
-        Simple Form Object:
-    </div>
-    {{ pimcore_relation("formObject",{
-        "types": ["object"],
-        "subtypes": {
-            "object": ["object"]
-        },
-        "classes": ["SimpleForm"],
-        "reload": true
-    }) }}
-{% endif %}
-
 {% if form is not null %}
     {% set layout = pimcore_relation("formObject").getElement().getLayout() | default('form_table') %}
     {% set useHoneyPot = pimcore_relation("formObject").getElement().getUseHoneyPot() | default(false) %}

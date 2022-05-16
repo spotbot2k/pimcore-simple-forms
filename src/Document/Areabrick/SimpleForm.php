@@ -9,7 +9,10 @@
 namespace SimpleFormsBundle\Document\Areabrick;
 
 use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
+use Pimcore\Extension\Document\Areabrick\EditableDialogBoxConfiguration;
+use Pimcore\Extension\Document\Areabrick\EditableDialogBoxInterface;
 use Pimcore\Mail;
+use Pimcore\Model\Document\Editable;
 use Pimcore\Model\Document\Editable\Area\Info;
 use SimpleFormsBundle\Event\PostSendMailEvent;
 use SimpleFormsBundle\Event\PreSendMailEvent;
@@ -19,8 +22,9 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class SimpleForm extends AbstractTemplateAreabrick
+class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxInterface
 {
     private FormFactoryInterface $formFactory;
 
@@ -28,11 +32,18 @@ class SimpleForm extends AbstractTemplateAreabrick
 
     private EventDispatcherInterface $dispatcher;
 
-    public function __construct(FormFactoryInterface $formFactory, SimpleFormService $service, EventDispatcherInterface $dispatcher)
-    {
+    private TranslatorInterface $translator;
+
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        SimpleFormService $service,
+        EventDispatcherInterface $dispatcher,
+        TranslatorInterface $translator
+    ) {
         $this->formFactory = $formFactory;
         $this->service = $service;
         $this->dispatcher = $dispatcher;
+        $this->translator = $translator;
     }
 
     /**
@@ -41,6 +52,30 @@ class SimpleForm extends AbstractTemplateAreabrick
     public function getTemplate()
     {
         return '@SimpleForms/areas/simple-form/view.html.twig';
+    }
+
+    public function getEditableDialogBoxConfiguration(Editable $area, ?Info $info): EditableDialogBoxConfiguration
+    {
+        $config = new EditableDialogBoxConfiguration();
+
+        $config->setItems([
+            'type'  => 'panel',
+            'items' => [
+                [
+                    'type'   => 'relation',
+                    'label'  => $this->translator->trans('pimcore_simple_forms.be.selected_form_object'),
+                    'name'   => 'formObject',
+                    'config' => [
+                        'types'    => ['object'],
+                        'subtypes' => ['object'],
+                        'classes'  => ['SimpleForm'],
+                        'reload'   => true,
+                    ],
+                ],
+            ],
+        ]);
+
+        return $config;
     }
 
     public function action(Info $info): ?Response
@@ -66,7 +101,7 @@ class SimpleForm extends AbstractTemplateAreabrick
                         $files = $this->service->handleUploads($formObject, $info->getRequest()->files->get(SimpleFormType::PREFIX));
                     }
 
-                    $params = $this->parseDataForMail($info->getRequest()->get(SimpleFormType::PREFIX), $files);
+                    $params = $this->service->parseDataAsArray($info->getRequest()->get(SimpleFormType::PREFIX), $files);
 
                     foreach ($formObject->getEmailDocuments() as $mailDocument) {
                         $mailDocument->setTo($this->renderString($mailDocument->getTo(), $params));
@@ -93,26 +128,6 @@ class SimpleForm extends AbstractTemplateAreabrick
         }
 
         return null;
-    }
-
-    private function parseDataForMail(array $formData, array $files = []): array
-    {
-        if (!array_key_exists('fields', $formData)) {
-            return [];
-        }
-
-        $result = [];
-        foreach ($formData['fields']['items'] as $idx => $field) {
-            $result = array_merge($result, $field);
-        }
-
-        foreach ($files as $key => $file) {
-            if (!array_key_exists($key, $result)) {
-                $result[$key] = $file;
-            }
-        }
-
-        return $result;
     }
 
     private function renderString(string $string, array $params): string
