@@ -25,7 +25,7 @@
         "bodyStyle": null,
         "datatype": "layout",
         "permissions": null,
-        "children": [
+        "childs": [
             {
                 "fieldtype": "tabpanel",
                 "border": false,
@@ -41,7 +41,7 @@
                 "bodyStyle": "",
                 "datatype": "layout",
                 "permissions": null,
-                "children": [
+                "childs": [
                     {
                         "fieldtype": "region",
                         "name": "Content",
@@ -55,7 +55,7 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "children": [
+                        "childs": [
                             {
                                 "fieldtype": "panel",
                                 "layout": "",
@@ -71,7 +71,7 @@
                                 "bodyStyle": "",
                                 "datatype": "layout",
                                 "permissions": null,
-                                "children": [
+                                "childs": [
                                     {
                                         "fieldtype": "fieldcollections",
                                         "allowedTypes": [
@@ -124,7 +124,7 @@
                                 "bodyStyle": "",
                                 "datatype": "layout",
                                 "permissions": null,
-                                "children": [
+                                "childs": [
                                     {
                                         "fieldtype": "checkbox",
                                         "defaultValue": 0,
@@ -196,7 +196,7 @@
                         "bodyStyle": "",
                         "datatype": "layout",
                         "permissions": null,
-                        "children": [
+                        "childs": [
                             {
                                 "fieldtype": "fieldcontainer",
                                 "layout": "hbox",
@@ -212,7 +212,7 @@
                                 "bodyStyle": "",
                                 "datatype": "layout",
                                 "permissions": null,
-                                "children": [
+                                "childs": [
                                     {
                                         "fieldtype": "select",
                                         "options": [
