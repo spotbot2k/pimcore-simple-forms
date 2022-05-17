@@ -22,7 +22,6 @@ composer require spotbot2k/pimcore-simple-forms
 - Send the submitted data to a custom URL/path so you could
   - process the data in a custom controller
   - create login forms
-  - use the form to perform an API call (WIP)
 - Parse to/cc/bcc from the form input
 
 ## Configuration
@@ -32,5 +31,3 @@ composer require spotbot2k/pimcore-simple-forms
   - [Using a custom controller](docs/021_Using_custom_controller.md)
   - Creating a login form
   - [Using events](docs/023_Using_events.md)
-  - Perform an API request
-  - Print a PDF
