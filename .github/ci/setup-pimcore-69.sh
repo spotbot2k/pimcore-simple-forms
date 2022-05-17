@@ -2,7 +2,7 @@
 
 set -eu
 
-cp -r .github/ci/files/app app
+cp -r .github/ci/files-pimcore-69/app app
 cp -r .github/ci/files-pimcore-69/bin bin
 cp -r .github/ci/files-pimcore-69/web web
 #cp -r .github/ci/files-pimcore-69/kernel kernel
