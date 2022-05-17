@@ -13,9 +13,17 @@ use Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData;
 use Pimcore\Model\DataObject\SimpleForm;
 use SimpleFormsBundle\Form\SimpleFormType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SimpleFormService
 {
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function validate(SimpleForm $form, array $data): bool
     {
         if ($form->getUseHoneyPot() && !empty($data[SimpleFormType::HONEYPOT_FIELD_NAME])) {
@@ -42,14 +50,17 @@ class SimpleFormService
         $stringValue = '';
         foreach ($formData['fields']['items'] as $idx => $field) {
             $result = array_merge($result, $field);
-            $stringValue .= sprintf('%s: %s%s', key($field), reset($field), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', $this->translateKey(key($field)), reset($field), PHP_EOL);
         }
 
         foreach ($files as $key => $file) {
             if (!array_key_exists($key, $result)) {
                 $result[$key] = $file;
             }
-            $stringValue .= sprintf('%s: %s%s', $key, implode(', ', $file), PHP_EOL);
+            $file = array_map(function($item) {
+                return basename($item);
+            }, $file);
+            $stringValue .= sprintf('%s: %s%s', $this->translateKey($key), implode(', ', $file), PHP_EOL);
         }
 
         $result['formValue'] = $stringValue;
@@ -112,5 +123,10 @@ class SimpleFormService
         $asset->save();
 
         return $asset;
+    }
+
+    private function translateKey(string $key): string
+    {
+        return $this->translator->trans("simple_form_{$key}");
     }
 }
