@@ -1,15 +1,6 @@
 name: "Codeception Tests Pimcore 6.9"
 
-on:
-    pull_request:
-        branches:
-            - "*.*"
-            - "master"
-    push:
-        branches:
-            - "*.*"
-            - "master"
-            - "*_actions"
+on: push
 
 env:
     PIMCORE_PROJECT_ROOT: ${{ github.workspace }}
