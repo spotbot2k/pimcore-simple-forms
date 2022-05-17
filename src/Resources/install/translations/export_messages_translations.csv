@@ -1,3 +1,4 @@
 "key";"de";"en"
 "Submit";"Absenden";"Submit"
 "pimcore_simple_forms.be.selected_form_object";"Form-Objekt";"Form DataObject"
+"pimcore_simple_forms.Fe.selected_form_object";"Bitte einen Form-Objekt zuweisen";"Please select a DataObject"
