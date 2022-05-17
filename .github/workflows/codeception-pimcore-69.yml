@@ -12,7 +12,7 @@ jobs:
     codeception-tests:
         name: "Codeception tests"
         runs-on: "ubuntu-20.04"
-        continue-on-error: ${{ matrix.experimental }}
+        continue-on-error: false
         strategy:
             matrix:
                 include:
@@ -45,15 +45,13 @@ jobs:
                     sleep 1
                   done
             - name: "Setup Pimcore environment"
-              env:
-                  DEPENDENCIES: "${{ matrix.dependencies }}"
               run: |
                   mysql -e "CREATE DATABASE pimcore_test CHARSET=utf8mb4;"
-                  .github/ci/scripts/setup-pimcore-69.sh
+                  .github/ci/setup-pimcore-69.sh
             - name: "Install dependencies with Composer"
               uses: "ramsey/composer-install@v1"
               with:
-                  dependency-versions: "${{ matrix.dependencies }}"
+                  dependency-versions: highest
 
             - name: "Test environment infos"
               run: |
