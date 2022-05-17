@@ -57,7 +57,7 @@ class SimpleFormService
             if (!array_key_exists($key, $result)) {
                 $result[$key] = $file;
             }
-            $file = array_map(function($item) {
+            $file = array_map(function ($item) {
                 return basename($item);
             }, $file);
             $stringValue .= sprintf('%s: %s%s', $this->translateKey($key), implode(', ', $file), PHP_EOL);
