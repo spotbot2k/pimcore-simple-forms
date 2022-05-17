@@ -47,7 +47,7 @@ jobs:
             - name: "Setup Pimcore environment"
               run: |
                   mysql -e "CREATE DATABASE pimcore_test CHARSET=utf8mb4;"
-                  .github/ci/scripts/setup-pimcore-69.sh
+                  .github/ci/setup-pimcore-69.sh
             - name: "Install dependencies with Composer"
               uses: "ramsey/composer-install@v1"
               with:
