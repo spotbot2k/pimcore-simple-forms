@@ -127,6 +127,6 @@ class SimpleFormService
 
     private function translateKey(string $key): string
     {
-        return $this->translator->trans("simple_form_{$key}");
+        return $this->translator->trans("simple_form_{$key}", [], 'default');
     }
 }

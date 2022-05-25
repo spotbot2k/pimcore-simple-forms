@@ -57,7 +57,6 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
     public function getEditableDialogBoxConfiguration(Editable $area, ?Info $info): EditableDialogBoxConfiguration
     {
         $config = new EditableDialogBoxConfiguration();
-
         $config->setItems([
             'type'  => 'panel',
             'items' => [
@@ -70,6 +69,7 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
                         'subtypes' => ['object'],
                         'classes'  => ['SimpleForm'],
                         'reload'   => true,
+                        'width'    => 350,
                     ],
                 ],
             ],
