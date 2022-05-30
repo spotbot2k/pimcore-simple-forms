@@ -26,13 +26,14 @@ class SimpleFormFile
         }
 
         $event->getForm()->add($event->getData()->getSlug(), FileType::class, [
-            'mapped'      => false,
-            'label'       => $event->getData()->getLabel(),
-            'help_html'   => true,
-            'required'    => $event->getData()->getRequired(),
-            'multiple'    => $event->getData()->getMultiple(),
-            'constraints' => $constraints,
-            'attr'        => [
+            'mapped'             => false,
+            'label'              => $event->getData()->getLabel(),
+            'help_html'          => true,
+            'required'           => $event->getData()->getRequired(),
+            'multiple'           => $event->getData()->getMultiple(),
+            'constraints'        => $constraints,
+            'translation_domain' => false,
+            'attr'               => [
                 'accept' => $event->getData()->getAccept(),
                 'size'   => $maxSizeMb,
             ],

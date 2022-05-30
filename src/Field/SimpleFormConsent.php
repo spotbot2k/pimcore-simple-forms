@@ -16,12 +16,13 @@ class SimpleFormConsent
     public static function renderField(FormEvent &$event): void
     {
         $event->getForm()->add($event->getData()->getSlug(), CheckboxType::class, [
-            'mapped'     => false,
-            'label'      => $event->getData()->getLabel(),
-            'label_attr' => [ 'style' => 'display: none' ],
-            'help'       => $event->getData()->getHelp(),
-            'help_html'  => true,
-            'required'   => $event->getData()->getRequired(),
+            'mapped'             => false,
+            'label'              => $event->getData()->getLabel(),
+            'label_attr'         => [ 'style' => 'display: none' ],
+            'help'               => $event->getData()->getHelp(),
+            'help_html'          => true,
+            'translation_domain' => false,
+            'required'           => $event->getData()->getRequired(),
         ]);
     }
 }

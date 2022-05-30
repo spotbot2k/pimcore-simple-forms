@@ -23,13 +23,14 @@ class SimpleFormTextarea
         }
 
         $event->getForm()->add($event->getData()->getSlug(), TextareaType::class, [
-            'mapped'      => false,
-            'label'       => $event->getData()->getLabel(),
-            'help_html'   => true,
-            'empty_data'  => null,
-            'required'    => $event->getData()->getRequired(),
-            'constraints' => $constraints,
-            'attr'        => [
+            'mapped'             => false,
+            'label'              => $event->getData()->getLabel(),
+            'help_html'          => true,
+            'empty_data'         => null,
+            'required'           => $event->getData()->getRequired(),
+            'constraints'        => $constraints,
+            'translation_domain' => false,
+            'attr'               => [
                 'rows'    => $event->getData()->getRows(),
             ],
         ]);

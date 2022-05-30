@@ -60,13 +60,14 @@ class SimpleFormInputField
         }
 
         $event->getForm()->add($event->getData()->getSlug(), $class, [
-            'mapped'      => false,
-            'label'       => $event->getData()->getLabel(),
-            'help_html'   => true,
-            'empty_data'  => null,
-            'required'    => $event->getData()->getRequired(),
-            'constraints' => $constraints,
-            'attr'        => [
+            'mapped'             => false,
+            'label'              => $event->getData()->getLabel(),
+            'help_html'          => true,
+            'empty_data'         => null,
+            'required'           => $event->getData()->getRequired(),
+            'constraints'        => $constraints,
+            'translation_domain' => false,
+            'attr'               => [
                 'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
                 'placeholder'  => $event->getData()->getPlaceholder(),
                 'type'         => $event->getData()->getInputType(),

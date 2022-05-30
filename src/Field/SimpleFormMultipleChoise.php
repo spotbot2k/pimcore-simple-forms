@@ -22,15 +22,16 @@ class SimpleFormMultipleChoise
         }
 
         $event->getForm()->add($event->getData()->getSlug(), ChoiceType::class, [
-            'mapped'     => false,
-            'label'      => $event->getData()->getLabel(),
-            'help_html'  => true,
-            'empty_data' => null,
-            'required'   => $event->getData()->getRequired() || ($type === 'radio'),
-            'choices'    => $options,
-            'multiple'   => ($type === 'checkbox'),
-            'expanded'   => ($type !== 'select'),
-            'data'       => ($type !== 'checkbox') ? $event->getData()->getDefaultValue() : [],
+            'mapped'             => false,
+            'label'              => $event->getData()->getLabel(),
+            'help_html'          => true,
+            'empty_data'         => null,
+            'required'           => $event->getData()->getRequired() || ($type === 'radio'),
+            'choices'            => $options,
+            'multiple'           => ($type === 'checkbox'),
+            'expanded'           => ($type !== 'select'),
+            'data'               => ($type !== 'checkbox') ? $event->getData()->getDefaultValue() : [],
+            'translation_domain' => false,
         ]);
     }
 }
