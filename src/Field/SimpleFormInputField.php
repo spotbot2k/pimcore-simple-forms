@@ -16,6 +16,27 @@ class SimpleFormInputField
     public static function renderField(FormEvent &$event): void
     {
         $class = 'TextType';
+        $constraints = [];
+
+        if ($event->getData()->getRequired()) {
+            $constraints[] = new NotBlank();
+        }
+
+        $config = [
+            'mapped'             => false,
+            'label'              => $event->getData()->getLabel(),
+            'help_html'          => true,
+            'empty_data'         => null,
+            'required'           => $event->getData()->getRequired(),
+            'constraints'        => $constraints,
+            'translation_domain' => false,
+            'attr'               => [
+                'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
+                'placeholder'  => $event->getData()->getPlaceholder(),
+                'type'         => $event->getData()->getInputType(),
+                'value'        => $event->getData()->getDefaultValue(),
+            ],
+        ];
 
         switch ($event->getData()->getInputType()) {
             case 'hidden':
@@ -24,6 +45,7 @@ class SimpleFormInputField
                 break;
             case 'date':
                 $class = 'DateType';
+                $config['widget'] = 'single_text';
 
                 break;
             case 'time':
@@ -53,26 +75,7 @@ class SimpleFormInputField
         }
 
         $class = sprintf("Symfony\Component\Form\Extension\Core\Type\%s", $class);
-        $constraints = [];
 
-        if ($event->getData()->getRequired()) {
-            $constraints[] = new NotBlank();
-        }
-
-        $event->getForm()->add($event->getData()->getSlug(), $class, [
-            'mapped'             => false,
-            'label'              => $event->getData()->getLabel(),
-            'help_html'          => true,
-            'empty_data'         => null,
-            'required'           => $event->getData()->getRequired(),
-            'constraints'        => $constraints,
-            'translation_domain' => false,
-            'attr'               => [
-                'autocomplete' => $event->getData()->getAutocomplete() ? 'on' : 'off',
-                'placeholder'  => $event->getData()->getPlaceholder(),
-                'type'         => $event->getData()->getInputType(),
-                'value'        => $event->getData()->getDefaultValue(),
-            ],
-        ]);
+        $event->getForm()->add($event->getData()->getSlug(), $class, $config);
     }
 }
