@@ -4,7 +4,7 @@
     {% form_theme form layout ~ '_layout.html.twig' %}
 
     <section class="container">
-        {{ form_start(form) }}
+        {{ form_start(form, { 'attr': { 'id': 'form_simple_' ~ pimcore_relation("formObject").getElement().getId() }} ) }}
             {% if useHoneyPot %}
                 {{ form_widget(form.email, {attr: {class: 'form-control', style: 'display:none !important', tabindex: '-1', autocomplete: 'off'}}) }}
             {% endif %}
