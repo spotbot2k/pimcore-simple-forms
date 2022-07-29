@@ -20,6 +20,8 @@ class FieldSlugCalculator implements CalculatorClassInterface
         if ($object instanceof SimpleForm) {
             $string = str_replace(' ', '_', $object->getFields()->get($context->getIndex())->getLabel());
             $string = str_replace('-', '_', $string);
+            $string = preg_replace('/[[:^print:]]/', '', $string);
+
 
             return strtolower($string);
         }
