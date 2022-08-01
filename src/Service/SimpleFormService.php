@@ -50,7 +50,7 @@ class SimpleFormService
         $stringValue = '';
         foreach ($formData['fields']['items'] as $field) {
             $result = array_merge($result, $field);
-            $stringValue .= sprintf('%s: %s%s', $this->translator->trans("simple_form_{key($field)}"), reset($field), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', $this->translator->trans(sprintf('simple_form_%s', key($field))), reset($field), PHP_EOL);
         }
 
         foreach ($files as $key => $file) {
@@ -60,7 +60,7 @@ class SimpleFormService
             $file = array_map(function ($item) {
                 return basename($item);
             }, $file);
-            $stringValue .= sprintf('%s: %s%s', $this->translator->trans("simple_form_{$key}"), implode(', ', $file), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', $this->translator->trans(sprintf('simple_form_%s', $key)), implode(', ', $file), PHP_EOL);
         }
 
         $result['formValue'] = $stringValue;
