@@ -48,9 +48,9 @@ class SimpleFormService
 
         $result = [];
         $stringValue = '';
-        foreach ($formData['fields']['items'] as $idx => $field) {
+        foreach ($formData['fields']['items'] as $field) {
             $result = array_merge($result, $field);
-            $stringValue .= sprintf('%s: %s%s', $this->translateKey(key($field)), reset($field), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', $this->translator->trans("simple_form_{key($field)}"), reset($field), PHP_EOL);
         }
 
         foreach ($files as $key => $file) {
@@ -60,7 +60,7 @@ class SimpleFormService
             $file = array_map(function ($item) {
                 return basename($item);
             }, $file);
-            $stringValue .= sprintf('%s: %s%s', $this->translateKey($key), implode(', ', $file), PHP_EOL);
+            $stringValue .= sprintf('%s: %s%s', $this->translator->trans("simple_form_{$key}"), implode(', ', $file), PHP_EOL);
         }
 
         $result['formValue'] = $stringValue;
@@ -73,7 +73,7 @@ class SimpleFormService
         $uploadedFiles = [];
 
         foreach ($form->getFields() as $idx => $field) {
-            if (array_key_exists($idx, $data['fields']['items'])) {
+            if (array_key_exists($idx, $data['fields']['items']) && $field instanceof AbstractData) {
                 $uploadedFiles[$field->getSlug()] = $this->uploadFile($field, $data['fields']['items'][$idx]);
             }
         }
@@ -123,10 +123,5 @@ class SimpleFormService
         $asset->save();
 
         return $asset;
-    }
-
-    private function translateKey(string $key): string
-    {
-        return $this->translator->trans("simple_form_{$key}", [], 'default');
     }
 }
