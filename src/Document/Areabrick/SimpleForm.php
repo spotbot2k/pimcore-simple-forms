@@ -83,6 +83,7 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
     public function action(Info $info): ?Response
     {
         $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')->getElement();
+        $info->setParam('snippet', null);
 
         if (!is_null($formObject)) {
             $formBuilder = $this->formFactory->createBuilder(SimpleFormType::class, $formObject);
@@ -125,8 +126,6 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
                             return new RedirectResponse($documentOnSuccess->getFullPath());
                         } elseif ($documentOnSuccess instanceof Snippet) {
                             $info->setParam('snippet', $documentOnSuccess);
-                        } else {
-                            $info->setParam('snippet', null);
                         }
                     }
                 }
