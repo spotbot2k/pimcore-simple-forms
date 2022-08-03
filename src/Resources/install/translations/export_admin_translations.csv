@@ -1,4 +1,4 @@
-﻿﻿﻿"key";"cs";"de";"en";"es";"fa";"fr";"hu";"it";"ja";"nl";"pl";"pt";"ru";"sk";"sv";"th";"tr";"uk";"pt_BR";"sv_FI";"zh_Hans"
+﻿﻿"key";"cs";"de";"en";"es";"fa";"fr";"hu";"it";"ja";"nl";"pl";"pt";"ru";"sk";"sv";"th";"tr";"uk";"pt_BR";"sv_FI";"zh_Hans"
 "pimcore_simple_forms.be.accept";"";"Datentypen";"Accept";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.accept.tooltip";"";"Mögliche Datentypen";"Restrict types via HTML5 accept attribute";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.autocomplete";"";"Autocomplete";"Autocomplete";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
@@ -49,3 +49,4 @@
 "pimcore_simple_forms.be.help";"";"Beschriftung";"Label";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.action";"";"Action";"Action";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
 "pimcore_simple_forms.be.method";"";"Method";"Method";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""
+"pimcore_simple_forms.be.selected_form_object";"";"Form-Objekt";"Form DataObject";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"";""

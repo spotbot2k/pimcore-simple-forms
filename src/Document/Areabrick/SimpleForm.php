@@ -64,13 +64,23 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
             'items' => [
                 [
                     'type'   => 'relation',
-                    'label'  => $this->translator->trans('pimcore_simple_forms.be.selected_form_object'),
+                    'label'  => $this->translator->trans('pimcore_simple_forms.fe.selected_form_object'),
                     'name'   => 'formObject',
                     'config' => [
                         'types'    => ['object'],
                         'subtypes' => ['object'],
                         'classes'  => ['SimpleForm'],
                         'reload'   => true,
+                        'width'    => 350,
+                    ],
+                ],
+                [
+                    'type'   => 'relation',
+                    'label'  => $this->translator->trans('pimcore_simple_forms.fe.selected_form_success_redirection'),
+                    'name'   => 'successRedirection',
+                    'config' => [
+                        'types'    => ['document'],
+                        'subtypes' => ['page', 'snippet'],
                         'width'    => 350,
                     ],
                 ],
@@ -83,6 +93,7 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
     public function action(Info $info): ?Response
     {
         $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')->getElement();
+        $documentOnSuccess = $this->getDocumentEditable($info->getDocument(), 'relation', 'successRedirection')->getElement();
         $info->setParam('snippet', null);
 
         if (!is_null($formObject)) {
@@ -119,14 +130,15 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
                     }
 
                     $this->dispatcher->dispatch(new PostSendMailEvent($formObject, $params), PostSendMailEvent::NAME);
-                    $documentOnSuccess = $formObject->getSuccessRedirect();
 
-                    if (!is_null($documentOnSuccess)) {
-                        if ($documentOnSuccess instanceof Page) {
-                            return new RedirectResponse($documentOnSuccess->getFullPath());
-                        } elseif ($documentOnSuccess instanceof Snippet) {
-                            $info->setParam('snippet', $documentOnSuccess);
-                        }
+                    if (is_null($documentOnSuccess)) {
+                        $documentOnSuccess = $formObject->getSuccessRedirect();
+                    }
+
+                    if ($documentOnSuccess instanceof Page) {
+                        return new RedirectResponse($documentOnSuccess->getFullPath());
+                    } elseif ($documentOnSuccess instanceof Snippet) {
+                        $info->setParam('snippet', $documentOnSuccess);
                     }
                 }
             }
