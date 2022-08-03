@@ -14,6 +14,8 @@ use Pimcore\Extension\Document\Areabrick\EditableDialogBoxInterface;
 use Pimcore\Mail;
 use Pimcore\Model\Document\Editable;
 use Pimcore\Model\Document\Editable\Area\Info;
+use Pimcore\Model\Document\Page;
+use Pimcore\Model\Document\Snippet;
 use SimpleFormsBundle\Event\PostSendMailEvent;
 use SimpleFormsBundle\Event\PreSendMailEvent;
 use SimpleFormsBundle\Form\SimpleFormType;
@@ -81,6 +83,7 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
     public function action(Info $info): ?Response
     {
         $formObject = $this->getDocumentEditable($info->getDocument(), 'relation', 'formObject')->getElement();
+
         if (!is_null($formObject)) {
             $formBuilder = $this->formFactory->createBuilder(SimpleFormType::class, $formObject);
 
@@ -115,9 +118,16 @@ class SimpleForm extends AbstractTemplateAreabrick implements EditableDialogBoxI
                     }
 
                     $this->dispatcher->dispatch(new PostSendMailEvent($formObject, $params), PostSendMailEvent::NAME);
+                    $documentOnSuccess = $formObject->getSuccessRedirect();
 
-                    if (!empty($formObject->getSuccessRedirect())) {
-                        return new RedirectResponse($formObject->getSuccessRedirect()->getFullPath());
+                    if (!is_null($documentOnSuccess)) {
+                        if ($documentOnSuccess instanceof Page) {
+                            return new RedirectResponse($documentOnSuccess->getFullPath());
+                        } elseif ($documentOnSuccess instanceof Snippet) {
+                            $info->setParam('snippet', $documentOnSuccess);
+                        } else {
+                            $info->setParam('snippet', null);
+                        }
                     }
                 }
             }

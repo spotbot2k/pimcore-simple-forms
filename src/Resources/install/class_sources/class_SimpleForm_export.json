@@ -367,6 +367,9 @@
                                 "documentTypes": [
                                     {
                                         "documentTypes": "page"
+                                    },
+                                    {
+                                        "documentTypes": "snippet"
                                     }
                                 ],
                                 "classes": [],

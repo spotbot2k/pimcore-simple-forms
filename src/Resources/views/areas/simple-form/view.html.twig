@@ -1,19 +1,23 @@
 {% if form is not null %}
-    {% set layout = pimcore_relation("formObject").getElement().getLayout() | default('form_table') %}
-    {% set useHoneyPot = pimcore_relation("formObject").getElement().getUseHoneyPot() | default(false) %}
-    {% form_theme form layout ~ '_layout.html.twig' %}
+    {% if snippet is not empty %}
+        {{ pimcore_inc(snippet, {'form': form}, false) }}
+    {% else %}
+        {% set layout = pimcore_relation("formObject").getElement().getLayout() | default('form_table') %}
+        {% set useHoneyPot = pimcore_relation("formObject").getElement().getUseHoneyPot() | default(false) %}
+        {% form_theme form layout ~ '_layout.html.twig' %}
 
-    <section class="container">
-        {{ form_start(form, { 'attr': { 'id': 'form_simple_' ~ pimcore_relation("formObject").getElement().getId() }} ) }}
-            {% if useHoneyPot %}
-                {{ form_widget(form.email, {attr: {class: 'form-control', style: 'display:none !important', tabindex: '-1', autocomplete: 'off'}}) }}
-            {% endif %}
-            
-            {{ form_widget(form.fields) }}
+        <section class="container">
+            {{ form_start(form, { 'attr': { 'id': 'form_simple_' ~ pimcore_relation("formObject").getElement().getId() }} ) }}
+                {% if useHoneyPot %}
+                    {{ form_widget(form.email, {attr: {class: 'form-control', style: 'display:none !important', tabindex: '-1', autocomplete: 'off'}}) }}
+                {% endif %}
+                
+                {{ form_widget(form.fields) }}
 
-            {{ form_widget(form.submit, {'label': ('Submit' | trans)}) }}
-        {{ form_end(form) }}
-    </section>
+                {{ form_widget(form.submit, {'label': ('Submit' | trans)}) }}
+            {{ form_end(form) }}
+        </section>
+    {% endif %}
 {% elseif editmode %}
-<i>{{ 'pimcore_simple_forms.fe.selected_form_object' | trans }}</i>
+    <i>{{ 'pimcore_simple_forms.fe.selected_form_object' | trans }}</i>
 {% endif %}
