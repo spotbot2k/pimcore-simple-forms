@@ -1,6 +1,6 @@
 # Using AJAX
 
-Any form can be send via AJAX if it is neccessery for your UX. You will have to implemente a [custom controller](./021_Using_custom_controller.md) for it to work properly.
+Any form can be send via AJAX if it is neccessery for your UX. You will have to implement a [custom controller](./021_Using_custom_controller.md) for it to work properly.
 
 Create a simple JavaScript file
 
@@ -34,6 +34,6 @@ window.addEventListener('load', () => {
 });
 ```
 
-Obviously the id will be the on of your form (the id of the data object will be different).
+Obviously the id will be the one of your data object.
 
 The reason why it is not a part of the bundle is the handling of the response - it is bound to your particular UX and UI.
